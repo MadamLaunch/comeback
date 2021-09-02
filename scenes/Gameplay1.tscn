@@ -1,0 +1,216 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://obj/gameplay/GameMode.gd" type="Script" id=1]
+[ext_resource path="res://bg/Rays.tscn" type="PackedScene" id=2]
+[ext_resource path="res://obj/gameplay/player/Player.gd" type="Script" id=3]
+[ext_resource path="res://obj/gameplay/player/PlayArea.tscn" type="PackedScene" id=4]
+[ext_resource path="res://obj/gameplay/player/Ready.tscn" type="PackedScene" id=5]
+[ext_resource path="res://obj/gameplay/player/BigPreview.tscn" type="PackedScene" id=6]
+[ext_resource path="res://obj/border/border_outter.svg" type="Texture" id=7]
+[ext_resource path="res://obj/gameplay/player/StatsFont.tres" type="DynamicFont" id=8]
+[ext_resource path="res://obj/gameplay/pause/PauseMenu.tscn" type="PackedScene" id=9]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Start"
+tracks/0/type = "method"
+tracks/0/path = NodePath("PlayArea/VC/V/BlockContainer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ true ],
+"method": "add_piece"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("PlayArea/Ready:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("PlayArea/Ready")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ false ],
+"method": "set_process_input"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("PlayArea/Ready:ready")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[node name="1P" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Player" type="Node2D" parent="."]
+position = Vector2( 325, 0 )
+script = ExtResource( 3 )
+
+[node name="Anim" type="AnimationPlayer" parent="Player"]
+anims/Start = SubResource( 1 )
+
+[node name="PlayArea" parent="Player" instance=ExtResource( 4 )]
+pause_mode = 1
+position = Vector2( 0, -25 )
+
+[node name="BlockContainer" parent="Player/PlayArea/VC/V" index="0"]
+source = NodePath("../../../../Preview")
+stats = NodePath("../../../../Preview/Stats")
+game_mode = NodePath("../../../../..")
+
+[node name="Ready" parent="Player/PlayArea" instance=ExtResource( 5 )]
+position = Vector2( 25, 25 )
+player_animator = NodePath("../../Anim")
+
+[node name="Preview" parent="Player" instance=ExtResource( 6 )]
+position = Vector2( 630, -25 )
+
+[node name="Stats" type="Node2D" parent="Player/Preview"]
+show_behind_parent = true
+position = Vector2( 172, 349.881 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Speed" type="NinePatchRect" parent="Player/Preview/Stats"]
+self_modulate = Color( 0.815686, 0.815686, 0.815686, 1 )
+show_behind_parent = true
+margin_left = -32.0
+margin_right = 468.0
+margin_bottom = 92.0
+texture = ExtResource( 7 )
+region_rect = Rect2( 0, 0, 135, 135 )
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Text" type="Label" parent="Player/Preview/Stats/Speed"]
+margin_left = 45.5
+margin_top = 13.5
+margin_right = 486.5
+margin_bottom = 78.5
+custom_fonts/font = ExtResource( 8 )
+text = "1×"
+align = 2
+valign = 1
+
+[node name="Time" type="NinePatchRect" parent="Player/Preview/Stats"]
+self_modulate = Color( 0.815686, 0.815686, 0.815686, 1 )
+show_behind_parent = true
+margin_left = -32.0
+margin_top = 110.0
+margin_right = 468.0
+margin_bottom = 202.0
+texture = ExtResource( 7 )
+region_rect = Rect2( 0, 0, 135, 135 )
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Text" type="Label" parent="Player/Preview/Stats/Time"]
+margin_left = 45.5
+margin_top = 13.5
+margin_right = 486.5
+margin_bottom = 78.5
+custom_fonts/font = ExtResource( 8 )
+text = "0:00:00.0"
+align = 2
+valign = 1
+
+[node name="Score" type="NinePatchRect" parent="Player/Preview/Stats"]
+self_modulate = Color( 0.815686, 0.815686, 0.815686, 1 )
+show_behind_parent = true
+margin_left = -32.0
+margin_top = 222.0
+margin_right = 468.0
+margin_bottom = 314.0
+texture = ExtResource( 7 )
+region_rect = Rect2( 0, 0, 135, 135 )
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Text" type="Label" parent="Player/Preview/Stats/Score"]
+margin_left = 45.5
+margin_top = 13.5
+margin_right = 486.5
+margin_bottom = 78.5
+custom_fonts/font = ExtResource( 8 )
+text = "0"
+align = 2
+valign = 1
+
+[node name="Average" type="NinePatchRect" parent="Player/Preview/Stats"]
+self_modulate = Color( 0.815686, 0.815686, 0.815686, 1 )
+show_behind_parent = true
+margin_left = -32.0
+margin_top = 334.0
+margin_right = 468.0
+margin_bottom = 426.0
+texture = ExtResource( 7 )
+region_rect = Rect2( 0, 0, 135, 135 )
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Text" type="Label" parent="Player/Preview/Stats/Average"]
+margin_left = 45.5
+margin_top = 13.5
+margin_right = 486.5
+margin_bottom = 78.5
+custom_fonts/font = ExtResource( 8 )
+text = "0.00 / min."
+align = 2
+valign = 1
+
+[node name="PauseMenu" parent="." instance=ExtResource( 9 )]
+visible = false
+position = Vector2( 960, 540 )
+game_mode = NodePath("..")
+
+[node name="Rays" parent="." instance=ExtResource( 2 )]
+
+[editable path="Player/PlayArea"]

@@ -1,0 +1,139 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://obj/gameplay/block/explosion/flash_gem.svg" type="Texture" id=1]
+[ext_resource path="res://obj/gameplay/block/shelf/Shelf.gd" type="Script" id=2]
+[ext_resource path="res://obj/gameplay/block/trigger/gem_pattern_dark.svg" type="Texture" id=3]
+[ext_resource path="res://obj/gameplay/block/shelf/shelf.svg" type="Texture" id=4]
+
+
+
+
+
+
+[sub_resource type="Animation" id=1]
+resource_name = "Explode"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:exploding")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.15 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "detonate"
+} ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.15 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "explode"
+} ]
+}
+
+[sub_resource type="Animation" id=2]
+tracks/0/type = "value"
+tracks/0/path = NodePath("Flash:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Flash:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Settle"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -80 ), Vector2( 0, 0 ) ]
+}
+
+[node name="Shelf" type="Node2D" groups=[
+"HideOnPause",
+]]
+script = ExtResource( 2 )
+exploding = true
+
+[node name="Anim" type="AnimationPlayer" parent="."]
+autoplay = "Flash"
+anims/Explode = SubResource( 1 )
+anims/Flash = SubResource( 2 )
+anims/Settle = SubResource( 3 )
+
+[node name="Body" type="NinePatchRect" parent="."]
+margin_right = 240.0
+margin_bottom = 80.0
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 240, 80 )
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Symbol" type="Sprite" parent="Body"]
+position = Vector2( 80, 0 )
+texture = ExtResource( 3 )
+centered = false
+hframes = 6
+frame = 5
+
+[node name="Flash" type="NinePatchRect" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+margin_right = 240.0
+margin_bottom = 80.0
+texture = ExtResource( 1 )
+region_rect = Rect2( 0, 0, 80, 80 )
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10

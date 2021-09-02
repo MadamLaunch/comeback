@@ -1,0 +1,256 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://logo/gem_logo_white.svg" type="Texture" id=1]
+[ext_resource path="res://logo/gem_logo_flat.svg" type="Texture" id=2]
+[ext_resource path="res://bg/Rays.tscn" type="PackedScene" id=3]
+[ext_resource path="res://logo/comeback_italics.svg" type="Texture" id=4]
+[ext_resource path="res://logo/comeback_italics_border.svg" type="Texture" id=5]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Rotate"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("TextureProgress1:radial_initial_angle")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TextureProgress2:radial_initial_angle")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("TextureProgress3:radial_initial_angle")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("TextureProgress4:radial_initial_angle")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("TextureProgress5:radial_initial_angle")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("TextureProgress6:radial_initial_angle")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("TextureProgress7:radial_initial_angle")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[node name="TitleCard" type="Node2D"]
+
+[node name="TransparencyMask" type="ColorRect" parent="."]
+visible = false
+margin_right = 1920.0
+margin_bottom = 1080.0
+color = Color( 1, 0, 1, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Rays" parent="." instance=ExtResource( 3 )]
+
+[node name="Anchor" parent="Rays" index="0"]
+rotation = 0.621655
+
+[node name="AnimationPlayer" parent="Rays/Anchor" index="0"]
+playback_speed = 1.0
+
+[node name="TextOutline" type="Sprite" parent="."]
+position = Vector2( 960, 540 )
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 5 )
+
+[node name="Gem" type="Sprite" parent="."]
+position = Vector2( 960, 540 )
+rotation = -0.10472
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Border" type="Sprite" parent="Gem"]
+self_modulate = Color( 0, 0, 0, 1 )
+scale = Vector2( 0.93, 0.93 )
+texture = ExtResource( 1 )
+
+[node name="Sections" type="Node2D" parent="Gem"]
+rotation = 8.27842e-09
+scale = Vector2( 0.86, 0.86 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Gem/Sections"]
+autoplay = "Rotate"
+playback_speed = 0.1
+anims/Rotate = SubResource( 1 )
+
+[node name="TextureProgress7" type="TextureProgress" parent="Gem/Sections"]
+margin_left = -400.0
+margin_top = -400.0
+margin_right = 400.0
+margin_bottom = 400.0
+max_value = 7.0
+value = 7.0
+texture_progress = ExtResource( 2 )
+fill_mode = 4
+radial_initial_angle = 35.1479
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureProgress6" type="TextureProgress" parent="Gem/Sections"]
+margin_left = -400.0
+margin_top = -400.0
+margin_right = 400.0
+margin_bottom = 400.0
+max_value = 7.0
+value = 6.0
+texture_progress = ExtResource( 2 )
+fill_mode = 4
+tint_progress = Color( 1, 0.286275, 1, 1 )
+radial_initial_angle = 35.1479
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureProgress5" type="TextureProgress" parent="Gem/Sections"]
+margin_left = -400.0
+margin_top = -400.0
+margin_right = 400.0
+margin_bottom = 400.0
+max_value = 7.0
+value = 5.0
+texture_progress = ExtResource( 2 )
+fill_mode = 4
+tint_progress = Color( 0.305882, 0.305882, 0.305882, 1 )
+radial_initial_angle = 35.1479
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureProgress4" type="TextureProgress" parent="Gem/Sections"]
+margin_left = -400.0
+margin_top = -400.0
+margin_right = 400.0
+margin_bottom = 400.0
+max_value = 7.0
+value = 4.0
+texture_progress = ExtResource( 2 )
+fill_mode = 4
+tint_progress = Color( 0.113725, 0.894118, 0.113725, 1 )
+radial_initial_angle = 35.1479
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureProgress3" type="TextureProgress" parent="Gem/Sections"]
+margin_left = -400.0
+margin_top = -400.0
+margin_right = 400.0
+margin_bottom = 400.0
+max_value = 7.0
+value = 3.0
+texture_progress = ExtResource( 2 )
+fill_mode = 4
+tint_progress = Color( 1, 0, 0, 1 )
+radial_initial_angle = 35.1479
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureProgress2" type="TextureProgress" parent="Gem/Sections"]
+margin_left = -400.0
+margin_top = -400.0
+margin_right = 400.0
+margin_bottom = 400.0
+max_value = 7.0
+value = 2.0
+texture_progress = ExtResource( 2 )
+fill_mode = 4
+tint_progress = Color( 1, 1, 0, 1 )
+radial_initial_angle = 35.1479
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureProgress1" type="TextureProgress" parent="Gem/Sections"]
+margin_left = -400.0
+margin_top = -400.0
+margin_right = 400.0
+margin_bottom = 400.0
+max_value = 7.0
+value = 1.0
+texture_progress = ExtResource( 2 )
+fill_mode = 4
+tint_progress = Color( 0, 0.835294, 1, 1 )
+radial_initial_angle = 35.1479
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Text" type="Sprite" parent="."]
+position = Vector2( 960, 540 )
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 4 )
+
+[editable path="Rays"]

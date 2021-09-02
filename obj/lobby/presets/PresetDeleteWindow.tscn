@@ -1,0 +1,212 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://fonts/CooperHewitt-HeavyItalic.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://obj/border/border_outter.svg" type="Texture" id=2]
+[ext_resource path="res://obj/border/border_inner.svg" type="Texture" id=3]
+[ext_resource path="res://obj/lobby/presets/PresetDeleteWindow.gd" type="Script" id=4]
+[ext_resource path="res://obj/lobby/presets/PresetDeleteWindowButton.theme" type="Theme" id=5]
+[ext_resource path="res://obj/lobby/presets/PresetDeleteWindowButton.gd" type="Script" id=6]
+
+
+[sub_resource type="Animation" id=1]
+resource_name = "Fade In"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Start"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="DynamicFont" id=3]
+size = 42
+extra_spacing_top = 3
+font_data = ExtResource( 1 )
+
+[node name="PresetDeleteWindow" type="ColorRect" groups=[
+"PresetDeleteWindow",
+]]
+margin_right = 1920.0
+margin_bottom = 1080.0
+color = Color( 0, 0, 0, 0.541176 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Anim" type="AnimationPlayer" parent="."]
+autoplay = "Start"
+"anims/Fade In" = SubResource( 1 )
+anims/Start = SubResource( 2 )
+
+[node name="Center" type="CenterContainer" parent="."]
+margin_right = 1920.0
+margin_bottom = 1080.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Outline" type="NinePatchRect" parent="Center"]
+modulate = Color( 0.815686, 0.815686, 0.815686, 1 )
+margin_left = 660.0
+margin_top = 365.0
+margin_right = 1260.0
+margin_bottom = 715.0
+rect_min_size = Vector2( 600, 350 )
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 135, 135 )
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+
+[node name="Background" type="ColorRect" parent="Center"]
+margin_left = 677.0
+margin_top = 381.0
+margin_right = 1243.0
+margin_bottom = 699.0
+rect_min_size = Vector2( 566, 318 )
+color = Color( 0.101961, 0.101961, 0.101961, 1 )
+
+[node name="VBox" type="VBoxContainer" parent="Center"]
+margin_left = 720.0
+margin_top = 381.0
+margin_right = 1200.0
+margin_bottom = 699.0
+rect_min_size = Vector2( 480, 318 )
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Center/VBox"]
+margin_top = 55.0
+margin_right = 480.0
+margin_bottom = 199.0
+custom_fonts/font = SubResource( 3 )
+text = "P1
+Delete
+PRESET?"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="Panel" type="Panel" parent="Center/VBox"]
+modulate = Color( 1, 1, 1, 0 )
+margin_top = 203.0
+margin_right = 480.0
+margin_bottom = 208.0
+rect_min_size = Vector2( 0, 5 )
+
+[node name="HBox" type="HBoxContainer" parent="Center/VBox"]
+margin_top = 212.0
+margin_right = 480.0
+margin_bottom = 262.0
+alignment = 1
+
+[node name="Confirm" type="Button" parent="Center/VBox/HBox"]
+margin_left = 83.0
+margin_right = 233.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 150, 50 )
+focus_next = NodePath("../Cancel")
+theme = ExtResource( 5 )
+custom_colors/font_color_hover = Color( 0.101961, 0.101961, 0.101961, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+text = "Confirm - Yes"
+script = ExtResource( 6 )
+window = NodePath("../../../..")
+delete = true
+
+[node name="Panel" type="Panel" parent="Center/VBox/HBox"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 237.0
+margin_right = 242.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 5, 0 )
+
+[node name="Cancel" type="Button" parent="Center/VBox/HBox"]
+margin_left = 246.0
+margin_right = 396.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 150, 50 )
+focus_next = NodePath("../Confirm")
+theme = ExtResource( 5 )
+custom_colors/font_color_hover = Color( 0.101961, 0.101961, 0.101961, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+text = "Cancel - No"
+script = ExtResource( 6 )
+window = NodePath("../../../..")
+
+[node name="Border" type="NinePatchRect" parent="Center"]
+margin_left = 660.0
+margin_top = 365.0
+margin_right = 1260.0
+margin_bottom = 715.0
+rect_min_size = Vector2( 600, 350 )
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 135, 135 )
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+__meta__ = {
+"_edit_lock_": true
+}
+[connection signal="focus_entered" from="Center/VBox/HBox/Confirm" to="." method="activate_button" binds= [ 1 ]]
+[connection signal="focus_exited" from="Center/VBox/HBox/Confirm" to="." method="activate_button"]
+[connection signal="mouse_entered" from="Center/VBox/HBox/Confirm" to="." method="activate_button" binds= [ 1 ]]
+[connection signal="mouse_exited" from="Center/VBox/HBox/Confirm" to="." method="activate_button"]
+[connection signal="pressed" from="Center/VBox/HBox/Confirm" to="Center/VBox/HBox/Confirm" method="click"]
+[connection signal="focus_entered" from="Center/VBox/HBox/Cancel" to="." method="activate_button" binds= [ 2 ]]
+[connection signal="focus_exited" from="Center/VBox/HBox/Cancel" to="." method="activate_button"]
+[connection signal="mouse_entered" from="Center/VBox/HBox/Cancel" to="." method="activate_button" binds= [ 2 ]]
+[connection signal="mouse_exited" from="Center/VBox/HBox/Cancel" to="." method="activate_button"]
+[connection signal="pressed" from="Center/VBox/HBox/Cancel" to="Center/VBox/HBox/Cancel" method="click"]

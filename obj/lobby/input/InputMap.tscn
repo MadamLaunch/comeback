@@ -1,0 +1,198 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://obj/lobby/input/InputMap.theme" type="Theme" id=1]
+[ext_resource path="res://obj/lobby/input/InputMap.gd" type="Script" id=2]
+[ext_resource path="res://obj/lobby/input/InputMapEntry.tscn" type="PackedScene" id=3]
+[ext_resource path="res://obj/lobby/input/InputMapSubmenu.gd" type="Script" id=4]
+
+
+[node name="InputMap" type="PanelContainer"]
+self_modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -1790.0
+margin_bottom = -730.0
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Rotation1" type="VBoxContainer" parent="."]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 184.0
+margin_bottom = 441.0
+custom_constants/separation = 10
+script = ExtResource( 4 )
+actions = [ "_rotate_n", "_rotate_s", "_rotate_w", "_rotate_e" ]
+labels = [ "Rotate above", "Rotate below", "Rotate left", "Rotate right" ]
+
+[node name="Above" parent="Rotation1" instance=ExtResource( 3 )]
+margin_right = 177.0
+action_label = "above"
+
+[node name="Below" parent="Rotation1" instance=ExtResource( 3 )]
+margin_top = 74.0
+margin_right = 177.0
+margin_bottom = 138.0
+action_label = "below"
+
+[node name="Left" parent="Rotation1" instance=ExtResource( 3 )]
+margin_top = 148.0
+margin_right = 177.0
+margin_bottom = 212.0
+action_label = "left"
+
+[node name="Right" parent="Rotation1" instance=ExtResource( 3 )]
+margin_top = 222.0
+margin_right = 177.0
+margin_bottom = 286.0
+action_label = "right"
+
+[node name="Rotation2" type="VBoxContainer" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 184.0
+margin_bottom = 441.0
+custom_constants/separation = 10
+script = ExtResource( 4 )
+actions = [ "_rotate_cw", "_rotate_ccw" ]
+labels = [ "Rotate clockwise", "Rotate counter-clockwise" ]
+
+[node name="Clockwise" parent="Rotation2" instance=ExtResource( 3 )]
+margin_right = 177.0
+action_label = "clockwise"
+
+[node name="CounterClockwise" parent="Rotation2" instance=ExtResource( 3 )]
+margin_top = 74.0
+margin_right = 177.0
+margin_bottom = 138.0
+action_label = "counter-clockwise"
+
+[node name="Movement" type="VBoxContainer" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 184.0
+margin_bottom = 441.0
+custom_constants/separation = 10
+script = ExtResource( 4 )
+actions = [ "_move_left", "_move_right", "_fast_fall", "_slam" ]
+labels = [ "Move left", "Move right", "Fast Fall", "Slam Down" ]
+
+[node name="Left" parent="Movement" instance=ExtResource( 3 )]
+margin_right = 177.0
+action_label = "left"
+
+[node name="Right" parent="Movement" instance=ExtResource( 3 )]
+margin_top = 74.0
+margin_right = 177.0
+margin_bottom = 138.0
+action_label = "right"
+
+[node name="FastFall" parent="Movement" instance=ExtResource( 3 )]
+margin_top = 148.0
+margin_right = 177.0
+margin_bottom = 212.0
+action_label = "fast fall"
+
+[node name="SlamDown" parent="Movement" instance=ExtResource( 3 )]
+margin_top = 222.0
+margin_right = 177.0
+margin_bottom = 286.0
+action_label = "slam down"
+
+[node name="DropCursor" type="VBoxContainer" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 184.0
+margin_bottom = 441.0
+custom_constants/separation = 10
+script = ExtResource( 4 )
+actions = [ "_cursor_left", "_cursor_right", "_cursor_slam_left", "_cursor_slam_right" ]
+labels = [ "Move Cursor Left", "Move Cursor Right", "Slam Cursor Left", "Slam Cursor Right" ]
+
+[node name="Left" parent="DropCursor" instance=ExtResource( 3 )]
+margin_right = 177.0
+action_label = "left"
+
+[node name="Right" parent="DropCursor" instance=ExtResource( 3 )]
+margin_top = 74.0
+margin_right = 177.0
+margin_bottom = 138.0
+action_label = "right"
+
+[node name="SlamLeft" parent="DropCursor" instance=ExtResource( 3 )]
+margin_top = 148.0
+margin_right = 177.0
+margin_bottom = 212.0
+action_label = "slam left"
+
+[node name="SlamRight" parent="DropCursor" instance=ExtResource( 3 )]
+margin_top = 222.0
+margin_right = 177.0
+margin_bottom = 286.0
+action_label = "slam right"
+
+[node name="Pausing" type="VBoxContainer" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 184.0
+margin_bottom = 441.0
+custom_constants/separation = 10
+script = ExtResource( 4 )
+actions = [ "_pause" ]
+labels = [ "Pause Game" ]
+
+[node name="Pause" parent="Pausing" instance=ExtResource( 3 )]
+margin_right = 177.0
+action_label = "pause"
+
+[node name="Menus" type="VBoxContainer" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 184.0
+margin_bottom = 441.0
+custom_constants/separation = 10
+script = ExtResource( 4 )
+actions = [ "_up", "_down", "_left", "_right", "_confirm", "_cancel" ]
+labels = [ "Up", "Down", "Left", "Right", "Confirm", "Cancel" ]
+
+[node name="Up" parent="Menus" instance=ExtResource( 3 )]
+margin_right = 177.0
+action_label = "up"
+
+[node name="Down" parent="Menus" instance=ExtResource( 3 )]
+margin_top = 74.0
+margin_right = 177.0
+margin_bottom = 138.0
+action_label = "down"
+
+[node name="Left" parent="Menus" instance=ExtResource( 3 )]
+margin_top = 148.0
+margin_right = 177.0
+margin_bottom = 212.0
+action_label = "left"
+
+[node name="Right" parent="Menus" instance=ExtResource( 3 )]
+margin_top = 222.0
+margin_right = 177.0
+margin_bottom = 286.0
+action_label = "right"
+
+[node name="Confirm" parent="Menus" instance=ExtResource( 3 )]
+margin_top = 296.0
+margin_right = 177.0
+margin_bottom = 360.0
+action_label = "confirm"
+
+[node name="Cancel" parent="Menus" instance=ExtResource( 3 )]
+margin_top = 370.0
+margin_right = 177.0
+margin_bottom = 434.0
+action_label = "cancel"

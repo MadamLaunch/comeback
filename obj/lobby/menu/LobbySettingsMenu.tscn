@@ -1,0 +1,1516 @@
+[gd_scene load_steps=44 format=2]
+
+[ext_resource path="res://obj/lobby/item/LobbySettingsItem.theme" type="Theme" id=1]
+[ext_resource path="res://obj/lobby/menu/LobbySettingsMenu.gd" type="Script" id=2]
+[ext_resource path="res://obj/symbols/80_0-circle.svg" type="Texture" id=3]
+[ext_resource path="res://obj/symbols/80_2-x.svg" type="Texture" id=4]
+[ext_resource path="res://obj/symbols/80_2-triangle.svg" type="Texture" id=5]
+[ext_resource path="res://obj/symbols/80_3-square.svg" type="Texture" id=6]
+[ext_resource path="res://obj/symbols/80_4-star.svg" type="Texture" id=7]
+[ext_resource path="res://obj/symbols/80_5-moon.svg" type="Texture" id=8]
+[ext_resource path="res://obj/gameplay/block/explosion/flash_gem.svg" type="Texture" id=9]
+[ext_resource path="res://obj/lobby/menu/CursorSprite.gd" type="Script" id=10]
+[ext_resource path="res://obj/lobby/menu/LobbySettingsSubMenu.gd" type="Script" id=11]
+[ext_resource path="res://obj/lobby/item/LobbySettingsItem.tscn" type="PackedScene" id=12]
+[ext_resource path="res://obj/lobby/item/LobbySettingsSubMenuSelector.gd" type="Script" id=13]
+[ext_resource path="res://obj/lobby/menu/LobbySettingsAnim.tscn" type="PackedScene" id=14]
+[ext_resource path="res://obj/lobby/input/InputMap.tscn" type="PackedScene" id=15]
+[ext_resource path="res://obj/lobby/item/LobbySettingsSliderItem.tscn" type="PackedScene" id=16]
+[ext_resource path="res://obj/lobby/menu/Instruction.gd" type="Script" id=17]
+[ext_resource path="res://obj/lobby/presets/GameplayPresetsSetting.gd" type="Script" id=18]
+[ext_resource path="res://obj/gameplay/block/Block.tscn" type="PackedScene" id=19]
+[ext_resource path="res://obj/gameplay/container/grid.png" type="Texture" id=20]
+[ext_resource path="res://obj/border/border_inner.svg" type="Texture" id=21]
+[ext_resource path="res://obj/gameplay/block/trigger/Trigger.tscn" type="PackedScene" id=22]
+[ext_resource path="res://obj/lobby/colors/ColorSlider.gd" type="Script" id=23]
+[ext_resource path="res://obj/lobby/colors/ColorSubMenu.gd" type="Script" id=24]
+[ext_resource path="res://obj/gameplay/block/ghost/Ghost.tscn" type="PackedScene" id=25]
+[ext_resource path="res://obj/lobby/presets/ColorPresetsSetting.gd" type="Script" id=26]
+[ext_resource path="res://fonts/CooperHewitt-HeavyItalic.otf" type="DynamicFontData" id=27]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Spin"
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Slide In (Left)"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 0.138696, 1 ),
+"update": 0,
+"values": [ Vector2( 480, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "_deactivate"
+}, {
+"args": [  ],
+"method": "_activate"
+} ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Slide In (Right)"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 0.138696, 1 ),
+"update": 0,
+"values": [ Vector2( -480, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "_deactivate"
+}, {
+"args": [  ],
+"method": "_activate"
+} ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Slide Out (Left)"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 0.143587, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -480, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_deactivate"
+} ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 0.143587, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 480, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_deactivate"
+} ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "Slide In (Left)"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 0.138696, 1 ),
+"update": 0,
+"values": [ Vector2( 480, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "_deactivate"
+}, {
+"args": [  ],
+"method": "_activate"
+} ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "Slide In (Right)"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 0.138696, 1 ),
+"update": 0,
+"values": [ Vector2( -480, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "_deactivate"
+}, {
+"args": [  ],
+"method": "_activate"
+} ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "Slide Out (Left)"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 0.143587, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -480, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_deactivate"
+} ]
+}
+
+[sub_resource type="Animation" id=9]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 0.143587, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 480, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_deactivate"
+} ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "Slide In (Left)"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 0.138696, 1 ),
+"update": 0,
+"values": [ Vector2( 480, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "_deactivate"
+}, {
+"args": [  ],
+"method": "_activate"
+} ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "Slide In (Right)"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 0.138696, 1 ),
+"update": 0,
+"values": [ Vector2( -480, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "_deactivate"
+}, {
+"args": [  ],
+"method": "_activate"
+} ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "Slide Out (Left)"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 0.143587, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -480, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_deactivate"
+} ]
+}
+
+[sub_resource type="Animation" id=13]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 0.143587, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 480, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_deactivate"
+} ]
+}
+
+[sub_resource type="DynamicFont" id=14]
+size = 80
+font_data = ExtResource( 27 )
+
+[sub_resource type="Theme" id=15]
+Label/colors/font_color = Color( 1, 1, 1, 1 )
+Label/colors/font_color_shadow = Color( 0, 0, 0, 0 )
+Label/colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+Label/constants/line_spacing = 3
+Label/constants/shadow_as_outline = 0
+Label/constants/shadow_offset_x = 1
+Label/constants/shadow_offset_y = 1
+Label/fonts/font = null
+Label/styles/normal = null
+
+[sub_resource type="Animation" id=16]
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.270588 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="LobbySettingsMenu" type="Control" groups=[
+"LobbySettingsMenu",
+]]
+margin_right = 480.0
+margin_bottom = 1080.0
+rect_clip_content = true
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+sprites = [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 8 ) ]
+number_node = NodePath("Submenus/Control/GameplaySettings/Number")
+color_node = NodePath("Submenus/Control/GameplaySettings/Color")
+starting_node = NodePath("Submenus/Control/GameplaySettings/Number")
+gameplay_settings_node = NodePath("Submenus/Control/GameplaySettings/Preset")
+
+[node name="Background" type="ColorRect" parent="." groups=[
+"Background0",
+]]
+margin_right = 480.0
+margin_bottom = 1080.0
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+visible = false
+modulate = Color( 0, 0, 0, 0.270588 )
+position = Vector2( 80, 0 )
+scale = Vector2( 0.66, 0.66 )
+texture = ExtResource( 9 )
+script = ExtResource( 10 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
+autoplay = "Spin"
+anims/Spin = SubResource( 1 )
+
+[node name="Submenus" type="VBoxContainer" parent="."]
+margin_right = 480.0
+margin_bottom = 1080.0
+rect_min_size = Vector2( 480, 1080 )
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+master_node = NodePath("..")
+
+[node name="Spacer1" type="Panel" parent="Submenus"]
+modulate = Color( 1, 1, 1, 0 )
+margin_right = 480.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 0, 15 )
+
+[node name="ActiveSubmenu" parent="Submenus" instance=ExtResource( 12 )]
+margin_top = 19.0
+margin_right = 480.0
+margin_bottom = 83.0
+script = ExtResource( 13 )
+label = "Menu"
+values = [ "gameplay", "input", "audio", "block colors", "menu colors" ]
+disable_button = true
+retain_arrows = true
+submenus = [ NodePath("../Control/GameplaySettings"), NodePath("../Control/InputSettings"), NodePath("../Control/AudioSettings"), NodePath("../Control/BlockColorSettings"), NodePath("../Control/MenuColorSettings") ]
+
+[node name="Spacer2" type="Panel" parent="Submenus"]
+modulate = Color( 1, 1, 1, 0 )
+margin_top = 87.0
+margin_right = 480.0
+margin_bottom = 127.0
+rect_min_size = Vector2( 0, 40 )
+
+[node name="Control" type="Control" parent="Submenus"]
+margin_top = 131.0
+margin_right = 480.0
+margin_bottom = 131.0
+
+[node name="GameplaySettings" type="VBoxContainer" parent="Submenus/Control"]
+margin_right = 480.0
+margin_bottom = 908.0
+rect_min_size = Vector2( 480, 0 )
+mouse_filter = 2
+theme = ExtResource( 1 )
+custom_constants/separation = 30
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+master_node = NodePath("../../..")
+
+[node name="Anim" parent="Submenus/Control/GameplaySettings" instance=ExtResource( 14 )]
+
+[node name="Number" parent="Submenus/Control/GameplaySettings" instance=ExtResource( 12 )]
+margin_right = 480.0
+margin_bottom = 64.0
+large_value = true
+values = [ "1", "2", "3", "4" ]
+static_value = true
+instruction = "Press Confirm to ready"
+
+[node name="Color" parent="Submenus/Control/GameplaySettings" instance=ExtResource( 12 )]
+margin_top = 94.0
+margin_right = 480.0
+margin_bottom = 158.0
+label = "Team Color"
+values = [ "blue", "yellow", "red", "green", "purple", "black", "white" ]
+instruction = "Press Confirm to ready"
+
+[node name="StartingSpeed" parent="Submenus/Control/GameplaySettings" instance=ExtResource( 12 )]
+margin_top = 188.0
+margin_right = 480.0
+margin_bottom = 252.0
+label = "Starting Speed"
+values = [ "0", "0.25", "0.5", "1.0", "1.75", "2.5", "3.25", "4.0", "4.75", "5.5", "6.25", "7.0", "10", "13", "16", "19", "22", "25", "30", "35", "40" ]
+suffix = "×"
+starting_value = 3
+instruction = "Press Confirm to ready"
+
+[node name="SpeedIncrement" parent="Submenus/Control/GameplaySettings" instance=ExtResource( 12 )]
+margin_top = 282.0
+margin_right = 480.0
+margin_bottom = 346.0
+label = "Speed Increment"
+values = [ "0", "0.7", "1.5", "2.2", "3.0", "3.7", "4.5", "5.2", "6.0", "6.7", "7.5", "8.2", "9.0" ]
+suffix = "%"
+starting_value = 2
+instruction = "Press Confirm to ready"
+
+[node name="DefenseMultiplier" parent="Submenus/Control/GameplaySettings" instance=ExtResource( 12 )]
+margin_top = 376.0
+margin_right = 480.0
+margin_bottom = 440.0
+label = "Defense Multiplier"
+values = [ "0", "0.5", "0.8", "1", "1.2", "1.5", "2", "3", "4" ]
+suffix = "×"
+starting_value = 3
+instruction = "Press Confirm to ready"
+
+[node name="OffenseMultiplier" parent="Submenus/Control/GameplaySettings" instance=ExtResource( 12 )]
+margin_top = 470.0
+margin_right = 480.0
+margin_bottom = 534.0
+label = "Offense Multiplier"
+values = [ "0", "0.5", "0.8", "1", "1.2", "1.5", "2", "3", "4" ]
+suffix = "×"
+starting_value = 3
+instruction = "Press Confirm to ready"
+
+[node name="GroupGarbageReceived" parent="Submenus/Control/GameplaySettings" instance=ExtResource( 12 )]
+margin_top = 564.0
+margin_right = 480.0
+margin_bottom = 628.0
+label = "3+ Player Garbage In"
+values = [ "normal", "all black", "all white", "all colors" ]
+instruction = "Press Confirm to ready"
+
+[node name="GroupGarbageSent" parent="Submenus/Control/GameplaySettings" instance=ExtResource( 12 )]
+margin_top = 658.0
+margin_right = 480.0
+margin_bottom = 722.0
+label = "3+ Player Garbage Out"
+values = [ "all black", "all white", "all colors" ]
+starting_value = 2
+instruction = "Press Confirm to ready"
+
+[node name="Preset" parent="Submenus/Control/GameplaySettings" groups=[
+"Preset Navigator",
+] instance=ExtResource( 12 )]
+margin_top = 752.0
+margin_right = 480.0
+margin_bottom = 816.0
+script = ExtResource( 18 )
+label = "Preset"
+values = [ "default", "custom" ]
+prompts = [ "", "Press Confirm to save", "Press Cancel to delete" ]
+color = NodePath("../Color")
+starting_speed = NodePath("../StartingSpeed")
+speed_increment = NodePath("../SpeedIncrement")
+defense_multiplier = NodePath("../DefenseMultiplier")
+offense_multiplier = NodePath("../OffenseMultiplier")
+group_garbage_in = NodePath("../GroupGarbageReceived")
+group_garbage_out = NodePath("../GroupGarbageSent")
+
+[node name="InputSettings" type="VBoxContainer" parent="Submenus/Control"]
+visible = false
+margin_right = 480.0
+margin_bottom = 730.0
+rect_min_size = Vector2( 480, 0 )
+custom_constants/separation = 30
+alignment = 1
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+master_node = NodePath("../../..")
+
+[node name="Anim" parent="Submenus/Control/InputSettings" instance=ExtResource( 14 )]
+
+[node name="RotationType" parent="Submenus/Control/InputSettings" instance=ExtResource( 12 )]
+margin_right = 480.0
+margin_bottom = 64.0
+label = "Rotation Type"
+values = [ "absolute", "relative" ]
+disable_button = true
+
+[node name="Controls" parent="Submenus/Control/InputSettings" instance=ExtResource( 12 )]
+margin_top = 94.0
+margin_right = 480.0
+margin_bottom = 158.0
+label = "Controls"
+values = [ "rotation", "movement", "drop cursor", "pausing", "menus" ]
+prompt = "Press Confirm to set"
+
+[node name="InputMap" parent="Submenus/Control/InputSettings" instance=ExtResource( 15 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 188.0
+margin_right = 480.0
+margin_bottom = 636.0
+setter_anchor = NodePath("../../../..")
+rotation_node = NodePath("../RotationType")
+
+[node name="Action" parent="Submenus/Control/InputSettings" instance=ExtResource( 12 )]
+margin_top = 666.0
+margin_right = 480.0
+margin_bottom = 730.0
+label = "Action"
+values = [ "reset all", "reset keyboard", "reset gamepad", "clear all", "clear keyboard", "clear gamepad" ]
+prompt = "Press Confirm to execute"
+
+[node name="AudioSettings" type="VBoxContainer" parent="Submenus/Control"]
+visible = false
+margin_right = 480.0
+margin_bottom = 244.0
+rect_min_size = Vector2( 480, 0 )
+custom_constants/separation = 30
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+master_node = NodePath("../../..")
+
+[node name="Anim" parent="Submenus/Control/AudioSettings" instance=ExtResource( 14 )]
+"anims/Slide In (Left)" = SubResource( 2 )
+"anims/Slide In (Right)" = SubResource( 3 )
+"anims/Slide Out (Left)" = SubResource( 4 )
+"anims/Slide Out (Right)" = SubResource( 5 )
+
+[node name="SoundEffects" parent="Submenus/Control/AudioSettings" groups=[
+"SFX_BUS",
+] instance=ExtResource( 16 )]
+margin_right = 480.0
+margin_bottom = 107.0
+label = "Sound Effects"
+sync_group = "SFX_BUS"
+label_multiplier = 100
+
+[node name="Label" parent="Submenus/Control/AudioSettings/SoundEffects" index="0"]
+margin_right = 480.0
+margin_bottom = 24.0
+
+[node name="Container" parent="Submenus/Control/AudioSettings/SoundEffects" index="1"]
+margin_top = 34.0
+margin_right = 480.0
+margin_bottom = 77.0
+
+[node name="L" parent="Submenus/Control/AudioSettings/SoundEffects/Container" index="0"]
+margin_bottom = 43.0
+
+[node name="HSlider" parent="Submenus/Control/AudioSettings/SoundEffects/Container" index="1"]
+margin_right = 416.0
+margin_bottom = 43.0
+max_value = 1.0
+step = 0.01
+
+[node name="R" parent="Submenus/Control/AudioSettings/SoundEffects/Container" index="2"]
+margin_left = 420.0
+margin_right = 480.0
+margin_bottom = 43.0
+
+[node name="Value" parent="Submenus/Control/AudioSettings/SoundEffects" index="2"]
+margin_top = 87.0
+margin_right = 480.0
+margin_bottom = 107.0
+
+[node name="Music" parent="Submenus/Control/AudioSettings" groups=[
+"MUSIC_BUS",
+] instance=ExtResource( 16 )]
+margin_top = 137.0
+margin_right = 480.0
+margin_bottom = 244.0
+label = "Music"
+sync_group = "MUSIC_BUS"
+label_multiplier = 100
+
+[node name="Label" parent="Submenus/Control/AudioSettings/Music" index="0"]
+margin_right = 480.0
+margin_bottom = 24.0
+
+[node name="Container" parent="Submenus/Control/AudioSettings/Music" index="1"]
+margin_top = 34.0
+margin_right = 480.0
+margin_bottom = 77.0
+
+[node name="L" parent="Submenus/Control/AudioSettings/Music/Container" index="0"]
+margin_bottom = 43.0
+
+[node name="HSlider" parent="Submenus/Control/AudioSettings/Music/Container" index="1"]
+margin_right = 416.0
+margin_bottom = 43.0
+max_value = 1.0
+step = 0.01
+
+[node name="R" parent="Submenus/Control/AudioSettings/Music/Container" index="2"]
+margin_left = 420.0
+margin_right = 480.0
+margin_bottom = 43.0
+
+[node name="Value" parent="Submenus/Control/AudioSettings/Music" index="2"]
+margin_top = 87.0
+margin_right = 480.0
+margin_bottom = 107.0
+
+[node name="BlockColorSettings" type="VBoxContainer" parent="Submenus/Control"]
+visible = false
+margin_right = 480.0
+margin_bottom = 475.0
+custom_constants/separation = 30
+script = ExtResource( 24 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+master_node = NodePath("../../..")
+previews = [ NodePath("Preview/Border/Background/Block"), NodePath("Preview/Border/Background/Trigger"), NodePath("Preview/Border/Background/Ghost1"), NodePath("Preview/Border/Background/Ghost2") ]
+presets_node = NodePath("Preset")
+
+[node name="Anim" parent="Submenus/Control/BlockColorSettings" instance=ExtResource( 14 )]
+"anims/Slide In (Left)" = SubResource( 6 )
+"anims/Slide In (Right)" = SubResource( 7 )
+"anims/Slide Out (Left)" = SubResource( 8 )
+"anims/Slide Out (Right)" = SubResource( 9 )
+
+[node name="ColorSelector" parent="Submenus/Control/BlockColorSettings" instance=ExtResource( 12 )]
+margin_right = 480.0
+margin_bottom = 64.0
+label = "Color"
+values = [ "blue", "yellow", "red", "green", "purple", "black", "white" ]
+
+[node name="Button" parent="Submenus/Control/BlockColorSettings/ColorSelector/Value" index="2"]
+disabled = true
+
+[node name="Red" parent="Submenus/Control/BlockColorSettings" groups=[
+"blockR0",
+] instance=ExtResource( 16 )]
+margin_top = 94.0
+margin_right = 480.0
+margin_bottom = 201.0
+script = ExtResource( 23 )
+label = "Red"
+sync_group = "blockR0"
+constant_signals = [ "update_color" ]
+master_node = NodePath("..")
+color_selector_node = NodePath("../ColorSelector")
+
+[node name="Green" parent="Submenus/Control/BlockColorSettings" groups=[
+"blockG0",
+] instance=ExtResource( 16 )]
+margin_top = 231.0
+margin_right = 480.0
+margin_bottom = 338.0
+script = ExtResource( 23 )
+label = "Green"
+sync_group = "blockG0"
+constant_signals = [ "update_color" ]
+master_node = NodePath("..")
+color_selector_node = NodePath("../ColorSelector")
+color = "G"
+
+[node name="Blue" parent="Submenus/Control/BlockColorSettings" groups=[
+"blockB0",
+] instance=ExtResource( 16 )]
+margin_top = 368.0
+margin_right = 480.0
+margin_bottom = 475.0
+script = ExtResource( 23 )
+label = "Blue"
+sync_group = "blockB0"
+constant_signals = [ "update_color" ]
+master_node = NodePath("..")
+color_selector_node = NodePath("../ColorSelector")
+color = "B"
+
+[node name="Preview" type="HBoxContainer" parent="Submenus/Control/BlockColorSettings"]
+margin_top = 505.0
+margin_right = 480.0
+margin_bottom = 795.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel1" type="Panel" parent="Submenus/Control/BlockColorSettings/Preview"]
+modulate = Color( 1, 1, 1, 0 )
+margin_right = 51.0
+margin_bottom = 290.0
+size_flags_horizontal = 3
+
+[node name="Border" type="NinePatchRect" parent="Submenus/Control/BlockColorSettings/Preview"]
+margin_left = 55.0
+margin_right = 425.0
+margin_bottom = 290.0
+rect_min_size = Vector2( 370, 290 )
+size_flags_horizontal = 2
+texture = ExtResource( 21 )
+region_rect = Rect2( 0, 0, 135, 135 )
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="ColorRect" parent="Submenus/Control/BlockColorSettings/Preview/Border"]
+show_behind_parent = true
+margin_left = 25.0
+margin_top = 25.0
+margin_right = 215.0
+margin_bottom = 215.0
+rect_min_size = Vector2( 320, 240 )
+size_flags_horizontal = 0
+color = Color( 0.101961, 0.101961, 0.101961, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Grid" type="Sprite" parent="Submenus/Control/BlockColorSettings/Preview/Border/Background"]
+modulate = Color( 0.2, 0.2, 0.2, 1 )
+position = Vector2( 160, 120 )
+texture = ExtResource( 20 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 320, 240 )
+
+[node name="Block" parent="Submenus/Control/BlockColorSettings/Preview/Border/Background" instance=ExtResource( 19 )]
+position = Vector2( 80, 80 )
+snap_on_ready = false
+color = 0
+
+[node name="Trigger" parent="Submenus/Control/BlockColorSettings/Preview/Border/Background" instance=ExtResource( 22 )]
+position = Vector2( 160, 80 )
+snap_on_ready = false
+color = 0
+
+[node name="Ghost1" parent="Submenus/Control/BlockColorSettings/Preview/Border/Background" instance=ExtResource( 25 )]
+position = Vector2( 80, 160 )
+z_index = 0
+snap_on_ready = false
+partner = true
+do_not_restart = true
+
+[node name="Ghost2" parent="Submenus/Control/BlockColorSettings/Preview/Border/Background" instance=ExtResource( 25 )]
+position = Vector2( 160, 160 )
+z_index = 0
+snap_on_ready = false
+partner = true
+do_not_restart = true
+
+[node name="Panel2" type="Panel" parent="Submenus/Control/BlockColorSettings/Preview"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 429.0
+margin_right = 480.0
+margin_bottom = 290.0
+size_flags_horizontal = 3
+
+[node name="Preset" parent="Submenus/Control/BlockColorSettings" groups=[
+"blockPreset0",
+] instance=ExtResource( 12 )]
+margin_top = 825.0
+margin_right = 480.0
+margin_bottom = 889.0
+script = ExtResource( 26 )
+label = "Preset"
+prompts = [ "", "Press Confirm to save", "Press Cancel to delete" ]
+master_node = NodePath("..")
+
+[node name="MenuColorSettings" type="VBoxContainer" parent="Submenus/Control"]
+visible = false
+margin_right = 480.0
+margin_bottom = 475.0
+custom_constants/separation = 30
+script = ExtResource( 24 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+master_node = NodePath("../../..")
+previews = [ NodePath("Preview/Border/Background/ColorRect1"), NodePath("Preview/Border/Background/ColorRect2"), NodePath("Preview/Border/Background/ColorRect3"), NodePath("Preview/Border/Background/ColorRect4"), NodePath("Preview/Border/Background/ColorRect5"), NodePath("Preview/Border/Background/ColorRect6"), NodePath("Preview/Border/Background/ColorRect7") ]
+presets_node = NodePath("Preset")
+color_type = 1
+
+[node name="Anim" parent="Submenus/Control/MenuColorSettings" instance=ExtResource( 14 )]
+"anims/Slide In (Left)" = SubResource( 10 )
+"anims/Slide In (Right)" = SubResource( 11 )
+"anims/Slide Out (Left)" = SubResource( 12 )
+"anims/Slide Out (Right)" = SubResource( 13 )
+
+[node name="ColorSelector" parent="Submenus/Control/MenuColorSettings" instance=ExtResource( 12 )]
+margin_right = 480.0
+margin_bottom = 64.0
+label = "Color"
+values = [ "blue", "yellow", "red", "green", "purple", "black", "white" ]
+
+[node name="Label" parent="Submenus/Control/MenuColorSettings/ColorSelector" index="0"]
+margin_right = 480.0
+margin_bottom = 24.0
+
+[node name="Value" parent="Submenus/Control/MenuColorSettings/ColorSelector" index="1"]
+margin_top = 34.0
+margin_right = 480.0
+margin_bottom = 64.0
+
+[node name="L" parent="Submenus/Control/MenuColorSettings/ColorSelector/Value" index="0"]
+margin_right = 183.0
+margin_bottom = 30.0
+
+[node name="Button" parent="Submenus/Control/MenuColorSettings/ColorSelector/Value" index="2"]
+margin_left = 187.0
+margin_right = 292.0
+margin_bottom = 30.0
+disabled = true
+
+[node name="R" parent="Submenus/Control/MenuColorSettings/ColorSelector/Value" index="3"]
+margin_left = 296.0
+margin_right = 480.0
+margin_bottom = 30.0
+
+[node name="Red" parent="Submenus/Control/MenuColorSettings" groups=[
+"uiR0",
+] instance=ExtResource( 16 )]
+margin_top = 94.0
+margin_right = 480.0
+margin_bottom = 201.0
+script = ExtResource( 23 )
+label = "Red"
+sync_group = "uiR0"
+constant_signals = [ "update_color" ]
+master_node = NodePath("..")
+color_selector_node = NodePath("../ColorSelector")
+starting_group = "ui"
+
+[node name="Green" parent="Submenus/Control/MenuColorSettings" groups=[
+"uiG0",
+] instance=ExtResource( 16 )]
+margin_top = 231.0
+margin_right = 480.0
+margin_bottom = 338.0
+script = ExtResource( 23 )
+label = "Green"
+sync_group = "uiG0"
+constant_signals = [ "update_color" ]
+master_node = NodePath("..")
+color_selector_node = NodePath("../ColorSelector")
+color = "G"
+starting_group = "ui"
+
+[node name="Blue" parent="Submenus/Control/MenuColorSettings" groups=[
+"uiB0",
+] instance=ExtResource( 16 )]
+margin_top = 368.0
+margin_right = 480.0
+margin_bottom = 475.0
+script = ExtResource( 23 )
+label = "Blue"
+sync_group = "uiB0"
+constant_signals = [ "update_color" ]
+master_node = NodePath("..")
+color_selector_node = NodePath("../ColorSelector")
+color = "B"
+starting_group = "ui"
+
+[node name="Preview" type="HBoxContainer" parent="Submenus/Control/MenuColorSettings"]
+margin_top = 505.0
+margin_right = 480.0
+margin_bottom = 795.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel1" type="Panel" parent="Submenus/Control/MenuColorSettings/Preview"]
+modulate = Color( 1, 1, 1, 0 )
+margin_right = 51.0
+margin_bottom = 290.0
+size_flags_horizontal = 3
+
+[node name="Border" type="NinePatchRect" parent="Submenus/Control/MenuColorSettings/Preview"]
+margin_left = 55.0
+margin_right = 425.0
+margin_bottom = 290.0
+rect_min_size = Vector2( 370, 290 )
+size_flags_horizontal = 2
+texture = ExtResource( 21 )
+region_rect = Rect2( 0, 0, 135, 135 )
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="ColorRect" parent="Submenus/Control/MenuColorSettings/Preview/Border"]
+show_behind_parent = true
+margin_left = 25.0
+margin_top = 25.0
+margin_right = 215.0
+margin_bottom = 215.0
+rect_min_size = Vector2( 320, 240 )
+size_flags_horizontal = 0
+color = Color( 0.101961, 0.101961, 0.101961, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect1" type="ColorRect" parent="Submenus/Control/MenuColorSettings/Preview/Border/Background" groups=[
+"Background0",
+]]
+margin_left = 13.0
+margin_top = 13.0
+margin_right = 55.0
+margin_bottom = 227.0
+rect_min_size = Vector2( 42, 214 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect2" type="ColorRect" parent="Submenus/Control/MenuColorSettings/Preview/Border/Background" groups=[
+"Background1",
+]]
+margin_left = 55.0
+margin_top = 13.0
+margin_right = 97.0
+margin_bottom = 227.0
+rect_min_size = Vector2( 42, 214 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect3" type="ColorRect" parent="Submenus/Control/MenuColorSettings/Preview/Border/Background" groups=[
+"Background2",
+]]
+margin_left = 97.0
+margin_top = 13.0
+margin_right = 139.0
+margin_bottom = 227.0
+rect_min_size = Vector2( 42, 214 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect4" type="ColorRect" parent="Submenus/Control/MenuColorSettings/Preview/Border/Background" groups=[
+"Background3",
+]]
+margin_left = 139.0
+margin_top = 13.0
+margin_right = 181.0
+margin_bottom = 227.0
+rect_min_size = Vector2( 42, 214 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect5" type="ColorRect" parent="Submenus/Control/MenuColorSettings/Preview/Border/Background" groups=[
+"Background4",
+]]
+margin_left = 181.0
+margin_top = 13.0
+margin_right = 223.0
+margin_bottom = 227.0
+rect_min_size = Vector2( 42, 214 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect6" type="ColorRect" parent="Submenus/Control/MenuColorSettings/Preview/Border/Background" groups=[
+"Background5",
+]]
+margin_left = 223.0
+margin_top = 13.0
+margin_right = 265.0
+margin_bottom = 227.0
+rect_min_size = Vector2( 42, 214 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect7" type="ColorRect" parent="Submenus/Control/MenuColorSettings/Preview/Border/Background" groups=[
+"Background6",
+]]
+margin_left = 265.0
+margin_top = 13.0
+margin_right = 307.0
+margin_bottom = 227.0
+rect_min_size = Vector2( 42, 214 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel2" type="Panel" parent="Submenus/Control/MenuColorSettings/Preview"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 429.0
+margin_right = 480.0
+margin_bottom = 290.0
+size_flags_horizontal = 3
+
+[node name="Preset" parent="Submenus/Control/MenuColorSettings" groups=[
+"uiPreset0",
+] instance=ExtResource( 12 )]
+margin_top = 825.0
+margin_right = 480.0
+margin_bottom = 889.0
+script = ExtResource( 26 )
+label = "Preset"
+prompts = [ "", "Press Confirm to save", "Press Cancel to delete" ]
+master_node = NodePath("..")
+
+[node name="Tutorial" type="VBoxContainer" parent="Submenus/Control"]
+visible = false
+margin_right = 480.0
+margin_bottom = 348.0
+rect_min_size = Vector2( 480, 0 )
+custom_constants/separation = 30
+alignment = 1
+script = ExtResource( 11 )
+master_node = NodePath("../../..")
+
+[node name="Anim" parent="Submenus/Control/Tutorial" instance=ExtResource( 14 )]
+
+[node name="Introduction" parent="Submenus/Control/Tutorial" instance=ExtResource( 12 )]
+margin_top = 1.0
+margin_right = 480.0
+margin_bottom = 65.0
+label = "How to Play"
+values = [ "introduction", "tutorial menu" ]
+instruction = "Press Confirm to begin"
+instructions = [ "Press Confirm to begin", "Press Confirm to enter" ]
+
+[node name="Movement" parent="Submenus/Control/Tutorial" instance=ExtResource( 12 )]
+margin_top = 95.0
+margin_right = 480.0
+margin_bottom = 159.0
+label = "Movement"
+values = [ "falling blocks", "rotation", "the drop cursor" ]
+instruction = "Press Confirm to begin"
+
+[node name="Scoring" parent="Submenus/Control/Tutorial" instance=ExtResource( 12 )]
+margin_top = 189.0
+margin_right = 480.0
+margin_bottom = 253.0
+label = "Scoring"
+values = [ "detonating blocks", "shelves", "combos" ]
+instruction = "Press Confirm to begin"
+
+[node name="Advanced" parent="Submenus/Control/Tutorial" instance=ExtResource( 12 )]
+margin_top = 283.0
+margin_right = 480.0
+margin_bottom = 347.0
+label = "Advanced"
+values = [ "garbage", "height bonus", "diamonds" ]
+instruction = "Press Confirm to begin"
+
+[node name="OtherModes" type="VBoxContainer" parent="Submenus/Control"]
+visible = false
+margin_right = 480.0
+margin_bottom = 348.0
+rect_min_size = Vector2( 480, 0 )
+custom_constants/separation = 30
+alignment = 1
+script = ExtResource( 11 )
+master_node = NodePath("../../..")
+
+[node name="Anim" parent="Submenus/Control/OtherModes" instance=ExtResource( 14 )]
+
+[node name="LocalModes" parent="Submenus/Control/OtherModes" instance=ExtResource( 12 )]
+margin_top = 1.0
+margin_right = 480.0
+margin_bottom = 65.0
+label = "Local Modes"
+values = [ "challenges", "collabrative", "tournament", "party" ]
+instruction = "Press Confirm to switch"
+
+[node name="Adventure" parent="Submenus/Control/OtherModes" instance=ExtResource( 12 )]
+margin_top = 95.0
+margin_right = 480.0
+margin_bottom = 159.0
+label = "Adventure"
+values = [ "knee-deep in the dead", "the shores of hell", "inferno", "thy flesh consumed" ]
+instruction = "Press Confirm to begin"
+
+[node name="OnlineModes" parent="Submenus/Control/OtherModes" instance=ExtResource( 12 )]
+margin_top = 189.0
+margin_right = 480.0
+margin_bottom = 253.0
+label = "Online Modes"
+values = [ "lobby", "tournament", "royale" ]
+instruction = "Press Confirm to switch"
+
+[node name="StreamInteraction" parent="Submenus/Control/OtherModes" instance=ExtResource( 12 )]
+margin_top = 283.0
+margin_right = 480.0
+margin_bottom = 347.0
+label = "Stream Interaction"
+values = [ "off", "on" ]
+disable_button = true
+prompt = "Also affects local play"
+
+[node name="Overlay" type="ColorRect" parent="."]
+visible = false
+margin_right = 480.0
+margin_bottom = 1080.0
+color = Color( 0, 0, 0, 0.270588 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Overlay"]
+margin_right = 480.0
+margin_bottom = 1080.0
+custom_fonts/font = SubResource( 14 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "READY!"
+align = 1
+valign = 1
+
+[node name="Button" type="Button" parent="Overlay"]
+margin_right = 480.0
+margin_bottom = 1077.0
+disabled = true
+flat = true
+
+[node name="Instruction" type="ColorRect" parent="."]
+margin_top = 1000.0
+margin_right = 480.0
+margin_bottom = 1080.0
+color = Color( 0, 0, 0, 0.541176 )
+script = ExtResource( 17 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Instruction"]
+margin_right = 480.0
+margin_bottom = 80.0
+theme = SubResource( 15 )
+text = "Special menu instructions"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Anim" type="AnimationPlayer" parent="Instruction/Label"]
+autoplay = "Flash"
+anims/Flash = SubResource( 16 )
+[connection signal="setting_changed" from="Submenus/ActiveSubmenu" to="Submenus/ActiveSubmenu" method="change_submenu"]
+[connection signal="confirm" from="Submenus/Control/GameplaySettings/Number" to="." method="set_ready" binds= [ true ]]
+[connection signal="focus_entered" from="Submenus/Control/GameplaySettings/Number" to="Submenus/Control/GameplaySettings/Number" method="activate"]
+[connection signal="resized" from="Submenus/Control/GameplaySettings/Number" to="Submenus/Control/GameplaySettings/Number" method="_arrange_buttons"]
+[connection signal="setting_changed" from="Submenus/Control/GameplaySettings/Number" to="." method="emit_reorder"]
+[connection signal="confirm" from="Submenus/Control/GameplaySettings/Color" to="." method="set_ready" binds= [ true ]]
+[connection signal="setting_changed" from="Submenus/Control/GameplaySettings/Color" to="." method="set_color"]
+[connection signal="confirm" from="Submenus/Control/GameplaySettings/StartingSpeed" to="." method="set_ready" binds= [ true ]]
+[connection signal="setting_changed" from="Submenus/Control/GameplaySettings/StartingSpeed" to="Submenus/Control/GameplaySettings/Preset" method="rebuild_customs"]
+[connection signal="confirm" from="Submenus/Control/GameplaySettings/SpeedIncrement" to="." method="set_ready" binds= [ true ]]
+[connection signal="setting_changed" from="Submenus/Control/GameplaySettings/SpeedIncrement" to="Submenus/Control/GameplaySettings/Preset" method="rebuild_customs"]
+[connection signal="confirm" from="Submenus/Control/GameplaySettings/DefenseMultiplier" to="." method="set_ready" binds= [ true ]]
+[connection signal="setting_changed" from="Submenus/Control/GameplaySettings/DefenseMultiplier" to="Submenus/Control/GameplaySettings/Preset" method="rebuild_customs"]
+[connection signal="confirm" from="Submenus/Control/GameplaySettings/OffenseMultiplier" to="." method="set_ready" binds= [ true ]]
+[connection signal="setting_changed" from="Submenus/Control/GameplaySettings/OffenseMultiplier" to="Submenus/Control/GameplaySettings/Preset" method="rebuild_customs"]
+[connection signal="confirm" from="Submenus/Control/GameplaySettings/GroupGarbageReceived" to="." method="set_ready" binds= [ true ]]
+[connection signal="setting_changed" from="Submenus/Control/GameplaySettings/GroupGarbageReceived" to="Submenus/Control/GameplaySettings/Preset" method="rebuild_customs"]
+[connection signal="confirm" from="Submenus/Control/GameplaySettings/GroupGarbageSent" to="." method="set_ready" binds= [ true ]]
+[connection signal="setting_changed" from="Submenus/Control/GameplaySettings/GroupGarbageSent" to="Submenus/Control/GameplaySettings/Preset" method="rebuild_customs"]
+[connection signal="cancel" from="Submenus/Control/GameplaySettings/Preset" to="Submenus/Control/GameplaySettings/Preset" method="launch_delete_preset_window"]
+[connection signal="confirm" from="Submenus/Control/GameplaySettings/Preset" to="Submenus/Control/GameplaySettings/Preset" method="launch_preset_name_window"]
+[connection signal="setting_changed" from="Submenus/Control/GameplaySettings/Preset" to="Submenus/Control/GameplaySettings/Preset" method="_save_selections"]
+[connection signal="setting_changed" from="Submenus/Control/InputSettings/RotationType" to="Submenus/Control/InputSettings/InputMap" method="set_rotation_mode"]
+[connection signal="activated" from="Submenus/Control/InputSettings/Controls" to="Submenus/Control/InputSettings/InputMap" method="activate"]
+[connection signal="confirm" from="Submenus/Control/InputSettings/Controls" to="Submenus/Control/InputSettings/InputMap" method="launch_input_setter"]
+[connection signal="deactivated" from="Submenus/Control/InputSettings/Controls" to="Submenus/Control/InputSettings/InputMap" method="deactivate"]
+[connection signal="setting_changed" from="Submenus/Control/InputSettings/Controls" to="Submenus/Control/InputSettings/InputMap" method="cycle_submap"]
+[connection signal="confirm" from="Submenus/Control/InputSettings/Action" to="Submenus/Control/InputSettings/InputMap" method="execute_task"]
+[connection signal="value_changed" from="Submenus/Control/AudioSettings/SoundEffects/Container/HSlider" to="Submenus/Control/AudioSettings/SoundEffects" method="_save_volume"]
+[connection signal="value_changed" from="Submenus/Control/AudioSettings/Music/Container/HSlider" to="Submenus/Control/AudioSettings/Music" method="_save_volume"]
+[connection signal="setting_changed" from="Submenus/Control/BlockColorSettings/ColorSelector" to="Submenus/Control/BlockColorSettings" method="load_presets"]
+[connection signal="cancel" from="Submenus/Control/BlockColorSettings/Preset" to="Submenus/Control/BlockColorSettings/Preset" method="launch_delete_preset_window"]
+[connection signal="confirm" from="Submenus/Control/BlockColorSettings/Preset" to="Submenus/Control/BlockColorSettings/Preset" method="launch_preset_name_window"]
+[connection signal="setting_changed" from="Submenus/Control/BlockColorSettings/Preset" to="Submenus/Control/BlockColorSettings" method="save_preset_selection"]
+[connection signal="setting_changed" from="Submenus/Control/BlockColorSettings/Preset" to="Submenus/Control/BlockColorSettings/Red" method="set_color" binds= [ true ]]
+[connection signal="setting_changed" from="Submenus/Control/BlockColorSettings/Preset" to="Submenus/Control/BlockColorSettings/Green" method="set_color" binds= [ true ]]
+[connection signal="setting_changed" from="Submenus/Control/BlockColorSettings/Preset" to="Submenus/Control/BlockColorSettings/Blue" method="set_color" binds= [ true ]]
+[connection signal="setting_changed" from="Submenus/Control/MenuColorSettings/ColorSelector" to="Submenus/Control/MenuColorSettings" method="load_presets"]
+[connection signal="cancel" from="Submenus/Control/MenuColorSettings/Preset" to="Submenus/Control/MenuColorSettings/Preset" method="launch_delete_preset_window"]
+[connection signal="confirm" from="Submenus/Control/MenuColorSettings/Preset" to="Submenus/Control/MenuColorSettings/Preset" method="launch_preset_name_window"]
+[connection signal="setting_changed" from="Submenus/Control/MenuColorSettings/Preset" to="Submenus/Control/MenuColorSettings" method="save_preset_selection"]
+[connection signal="setting_changed" from="Submenus/Control/MenuColorSettings/Preset" to="Submenus/Control/MenuColorSettings/Red" method="set_color" binds= [ true ]]
+[connection signal="setting_changed" from="Submenus/Control/MenuColorSettings/Preset" to="Submenus/Control/MenuColorSettings/Green" method="set_color" binds= [ true ]]
+[connection signal="setting_changed" from="Submenus/Control/MenuColorSettings/Preset" to="Submenus/Control/MenuColorSettings/Blue" method="set_color" binds= [ true ]]
+[connection signal="pressed" from="Overlay/Button" to="." method="emit_signal" binds= [ "launch" ]]
+
+[editable path="Submenus/Control/AudioSettings/SoundEffects"]
+
+[editable path="Submenus/Control/AudioSettings/Music"]
+
+[editable path="Submenus/Control/BlockColorSettings/ColorSelector"]
+
+[editable path="Submenus/Control/MenuColorSettings/ColorSelector"]

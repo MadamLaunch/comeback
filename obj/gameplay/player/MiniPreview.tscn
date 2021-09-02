@@ -1,0 +1,95 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://obj/gameplay/player/Preview.gd" type="Script" id=1]
+[ext_resource path="res://obj/border/border_outter.svg" type="Texture" id=2]
+[ext_resource path="res://obj/symbols/diamond_icon.svg" type="Texture" id=4]
+[ext_resource path="res://fonts/CooperHewitt-HeavyItalic.otf" type="DynamicFontData" id=5]
+[ext_resource path="res://obj/border/border_inner.svg" type="Texture" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 64
+extra_spacing_top = 6
+extra_spacing_bottom = -8
+font_data = ExtResource( 5 )
+
+[node name="Preview" type="Node2D"]
+script = ExtResource( 1 )
+source = NodePath("Queue/p1")
+container = true
+
+[node name="Outline" type="NinePatchRect" parent="."]
+self_modulate = Color( 0.815686, 0.815686, 0.815686, 1 )
+margin_right = 172.0
+margin_bottom = 288.0
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 135, 135 )
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Background" type="ColorRect" parent="Outline"]
+modulate = Color( 0.101961, 0.101961, 0.101961, 1 )
+margin_left = 25.0
+margin_top = 25.0
+margin_right = 147.0
+margin_bottom = 263.0
+color = Color( 0.101961, 0.101961, 0.101961, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Queue" type="Node2D" parent="."]
+position = Vector2( 86, 115 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="p1" type="Node2D" parent="Queue"]
+position = Vector2( -30, 0 )
+scale = Vector2( 0.8, 0.8 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+countdown = NodePath("../DiamondCountdown/Text")
+
+[node name="DiamondCountdown" type="Node2D" parent="Queue"]
+position = Vector2( 0, 103 )
+scale = Vector2( 0.6, 0.6 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Icon" type="Sprite" parent="Queue/DiamondCountdown"]
+position = Vector2( -43, 0 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 4 )
+
+[node name="Text" type="RichTextLabel" parent="Queue/DiamondCountdown" groups=[
+"HideOnPause",
+]]
+anchor_right = 1.0
+margin_left = -9.0
+margin_top = -28.0
+margin_right = 87.0
+margin_bottom = 37.0
+custom_fonts/normal_font = SubResource( 1 )
+custom_colors/default_color = Color( 1, 1, 1, 1 )
+bbcode_enabled = true
+bbcode_text = "[right]25 [/right]"
+text = "25 "
+
+[node name="Border" type="NinePatchRect" parent="."]
+margin_right = 172.0
+margin_bottom = 288.0
+texture = ExtResource( 6 )
+draw_center = false
+region_rect = Rect2( 0, 0, 135, 135 )
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32

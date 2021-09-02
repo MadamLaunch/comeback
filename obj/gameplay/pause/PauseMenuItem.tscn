@@ -1,0 +1,60 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://fonts/CooperHewitt-HeavyItalic.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://obj/gameplay/block/ghost/triangle-pointer.svg" type="Texture" id=2]
+[ext_resource path="res://obj/gameplay/pause/PauseMenuItem.gd" type="Script" id=3]
+
+
+
+
+[sub_resource type="DynamicFont" id=1]
+size = 28
+extra_spacing_top = 4
+extra_spacing_bottom = -4
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "Wave"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Icon:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 50 ), Vector2( 0, 0 ) ]
+}
+
+[node name="Button" type="Button" groups=[
+"PauseMenuItem",
+]]
+margin_right = 200.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 200, 0 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.466667, 0.466667, 0.466667, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 0.901961, 0.901961, 0.901961, 1 )
+text = "OPTION"
+flat = true
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Anim" type="AnimationPlayer" parent="."]
+anims/Wave = SubResource( 2 )
+
+[node name="Icon" type="Sprite" parent="."]
+visible = false
+position = Vector2( 200, 17 )
+rotation = 1.5708
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 2 )
+offset = Vector2( 0, -20 )
+[connection signal="mouse_entered" from="." to="." method="activate"]
+[connection signal="mouse_exited" from="." to="." method="deactivate"]

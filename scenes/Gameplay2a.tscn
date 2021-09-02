@@ -1,0 +1,972 @@
+[gd_scene load_steps=25 format=2]
+
+[ext_resource path="res://obj/gameplay/player/Player.gd" type="Script" id=1]
+[ext_resource path="res://obj/border/border_outter.svg" type="Texture" id=2]
+[ext_resource path="res://obj/gameplay/GameMode.gd" type="Script" id=3]
+[ext_resource path="res://fonts/CooperHewitt-HeavyItalic.otf" type="DynamicFontData" id=4]
+[ext_resource path="res://obj/gameplay/player/PlayArea.tscn" type="PackedScene" id=5]
+[ext_resource path="res://obj/gameplay/container/Restart.tscn" type="PackedScene" id=6]
+[ext_resource path="res://obj/gameplay/player/StatsFont.tres" type="DynamicFont" id=7]
+[ext_resource path="res://obj/gameplay/player/Preview.tscn" type="PackedScene" id=8]
+[ext_resource path="res://obj/gameplay/player/ScoreAnim.tscn" type="PackedScene" id=9]
+[ext_resource path="res://obj/gameplay/pause/PauseMenu.tscn" type="PackedScene" id=10]
+[ext_resource path="res://obj/gameplay/pattern/PatternSelector.tscn" type="PackedScene" id=11]
+[ext_resource path="res://bg/Rays.tscn" type="PackedScene" id=12]
+
+[sub_resource type="Animation" id=1]
+
+[sub_resource type="Animation" id=2]
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Player1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 0.329877, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1032, -25 ), Vector2( 10, -25 ), Vector2( 10, -25 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Player1/Preview:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 0.75, 1 ),
+"transitions": PoolRealArray( 0.329877, 2, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 620, 65 ), Vector2( 660, 65 ), Vector2( 650, 65 ), Vector2( 650, 65 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Player2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 0.329877, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2342, -25 ), Vector2( 1300, -25 ), Vector2( 1300, -25 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Player2/Preview:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5, 0.75, 1 ),
+"transitions": PoolRealArray( 0.329877, 2, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -182, 65 ), Vector2( -222, 65 ), Vector2( -212, 65 ), Vector2( -212, 65 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Player2/Preview/Score/Number/Text:custom_colors/default_color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = false
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.65, 1 ),
+"transitions": PoolRealArray( 1, 3.13834, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Player1/Preview/Score/Number/Text:custom_colors/default_color")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = false
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.65, 1 ),
+"transitions": PoolRealArray( 1, 3.13834, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Player1/Preview/Score/Number:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.65, 1 ),
+"transitions": PoolRealArray( 1, 3.13834, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Player2/Preview/Score/Number:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.65, 1 ),
+"transitions": PoolRealArray( 1, 3.13834, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Player1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 10, -25 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Player2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1300, -25 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Player1/Preview/Score:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 0,
+"values": [  ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Player2/Preview/Score:rect_position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 0,
+"values": [  ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 1.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.5, 0.8, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 0.659754, 1, 1 ),
+"update": 0,
+"values": [ -90.0, -90.0, -10.0, 0.0, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2, 0.5, 0.6, 0.7, 0.75, 0.8, 1.5 ),
+"transitions": PoolRealArray( 0.757859, 0.757859, 0.25, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1.5, 1.5 ), Vector2( 1.5, 1.5 ), Vector2( 1, 1 ), Vector2( 1.15, 1.15 ), Vector2( 1, 1 ), Vector2( 1.1, 1.1 ), Vector2( 1, 1 ), Vector2( 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2, 0.5, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "Ready"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("PatternSelector:ready")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("PatternSelector")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "dock"
+}, {
+"args": [  ],
+"method": "start_game"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("SelectYourPattern:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Ready:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Ready:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.5 ),
+"transitions": PoolRealArray( 1, 0.5, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.7, 0.7 ), Vector2( 1, 1 ), Vector2( 0.9, 0.9 ), Vector2( 0.9, 0.9 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Restart:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "Start"
+tracks/0/type = "method"
+tracks/0/path = NodePath("../..")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "clear_queue"
+} ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("../PlayArea/VC/V/BlockContainer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ true ],
+"method": "add_piece"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("PatternSelector:ready")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath("PatternSelector")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "disable_ready"
+} ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("SelectYourPattern:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Ready:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "Unready"
+length = 0.5
+tracks/0/type = "method"
+tracks/0/path = NodePath("PatternSelector")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "raise"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SelectYourPattern:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Ready:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Restart:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="DynamicFont" id=8]
+size = 64
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+extra_spacing_top = 10
+extra_spacing_bottom = -10
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 96
+extra_spacing_bottom = -26
+font_data = ExtResource( 4 )
+
+[sub_resource type="Animation" id=10]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("PatternSelector:ready")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("PatternSelector")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "dock"
+}, {
+"args": [  ],
+"method": "start_game"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("SelectYourPattern:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Ready:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Ready:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.5 ),
+"transitions": PoolRealArray( 1, 0.5, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.7, 0.7 ), Vector2( 1, 1 ), Vector2( 0.9, 0.9 ), Vector2( 0.9, 0.9 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Restart:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=11]
+tracks/0/type = "method"
+tracks/0/path = NodePath("../..")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "clear_queue"
+} ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("../PlayArea/VC/V/BlockContainer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ true ],
+"method": "add_piece"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("PatternSelector:ready")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath("PatternSelector")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "disable_ready"
+} ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("SelectYourPattern:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Ready:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=12]
+length = 0.5
+tracks/0/type = "method"
+tracks/0/path = NodePath("PatternSelector")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "raise"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SelectYourPattern:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Ready:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Restart:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[node name="2P" type="Node2D" groups=[
+"GameMode",
+]]
+script = ExtResource( 3 )
+
+[node name="Anim" type="AnimationPlayer" parent="."]
+autoplay = "Intro"
+anims/Dip = SubResource( 1 )
+anims/Intro = SubResource( 2 )
+anims/Normal = SubResource( 3 )
+
+[node name="Player1" type="Node2D" parent="."]
+position = Vector2( 10, -25 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+pattern_selector = NodePath("Pattern/PatternSelector")
+
+[node name="PlayArea" parent="Player1" instance=ExtResource( 5 )]
+
+[node name="BlockContainer" parent="Player1/PlayArea/VC/V" index="0"]
+explosion_layer = NodePath("../../../../../../2P/Player1/PlayArea/Explosions")
+source = NodePath("../../../../../../2P/Player1/Preview")
+game_mode = NodePath("../../../../..")
+scoreboard = NodePath("../../../../Preview/Score")
+
+[node name="Preview" parent="Player1" instance=ExtResource( 8 )]
+position = Vector2( 650, 65 )
+source = NodePath("../Preview/Queue/p1")
+read_input = true
+
+[node name="Score" type="NinePatchRect" parent="Player1/Preview"]
+self_modulate = Color( 0.815686, 0.815686, 0.815686, 1 )
+show_behind_parent = true
+margin_left = 108.0
+margin_top = 277.0
+margin_right = 372.0
+margin_bottom = 377.0
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 135, 135 )
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+
+[node name="Number" type="Node2D" parent="Player1/Preview/Score"]
+position = Vector2( 164, 51.5 )
+
+[node name="Anim" type="AnimationPlayer" parent="Player1/Preview/Score/Number"]
+anims/Increment = SubResource( 4 )
+
+[node name="Text" type="Label" parent="Player1/Preview/Score/Number"]
+margin_left = -100.0
+margin_top = -32.5
+margin_right = 100.0
+margin_bottom = 32.5
+custom_fonts/font = ExtResource( 7 )
+text = "0"
+align = 1
+valign = 1
+
+[node name="Pattern" type="NinePatchRect" parent="Player1"]
+self_modulate = Color( 0.81, 0.81, 0.81, 1 )
+show_behind_parent = true
+margin_left = 610.0
+margin_top = 895.0
+margin_right = 946.0
+margin_bottom = 1090.0
+rect_pivot_offset = Vector2( -271.381, -201.938 )
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 135, 135 )
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Anim" type="AnimationPlayer" parent="Player1/Pattern"]
+anims/Ready = SubResource( 5 )
+anims/Start = SubResource( 6 )
+anims/Unready = SubResource( 7 )
+
+[node name="Footer" type="ColorRect" parent="Player1/Pattern"]
+self_modulate = Color( 0.81, 0.81, 0.81, 1 )
+margin_left = -32.0
+margin_right = 32.0
+margin_bottom = 195.0
+
+[node name="PatternSelector" parent="Player1/Pattern" instance=ExtResource( 11 )]
+self_modulate = Color( 100, 100, 100, 1 )
+position = Vector2( -305, -350 )
+scale = Vector2( 0.75, 0.75 )
+z_index = 1
+opponent_container = NodePath("../../../Player2/PlayArea/VC/V/BlockContainer")
+opponent_selector = NodePath("../../../Player2/Pattern/PatternSelector")
+parent_animator = NodePath("../Anim")
+docked_position = Vector2( 152, 96 )
+docked_scale = Vector2( 0.5, 0.5 )
+raised_position = Vector2( -305, -350 )
+raised_scale = Vector2( 0.75, 0.75 )
+
+[node name="SelectYourPattern" type="Node2D" parent="Player1/Pattern"]
+position = Vector2( -305, -630 )
+z_index = 1
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Player1/Pattern/SelectYourPattern"]
+margin_left = -280.0
+margin_top = -80.0
+margin_right = 280.0
+margin_bottom = 80.0
+custom_fonts/font = SubResource( 8 )
+text = "Select your pattern"
+align = 1
+valign = 1
+autowrap = true
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Ready" type="Node2D" parent="Player1/Pattern"]
+visible = false
+position = Vector2( -305, -350 )
+scale = Vector2( 0.7, 0.7 )
+z_index = 1
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Player1/Pattern/Ready"]
+margin_left = -165.0
+margin_top = -40.0
+margin_right = 166.0
+margin_bottom = 40.0
+custom_fonts/font = SubResource( 9 )
+text = "Ready!"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Restart" parent="Player1/Pattern" instance=ExtResource( 6 )]
+visible = true
+position = Vector2( -305, -70 )
+z_index = 1
+
+[node name="Player2" type="Node2D" parent="."]
+position = Vector2( 1300, -25 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+color = 2
+number = "2"
+pattern_selector = NodePath("Pattern/PatternSelector")
+
+[node name="PlayArea" parent="Player2" instance=ExtResource( 5 )]
+
+[node name="BlockContainer" parent="Player2/PlayArea/VC/V" index="0"]
+explosion_layer = NodePath("../../../../../../2P/Player2/PlayArea/Explosions")
+source = NodePath("../../../../../../2P/Player2/Preview")
+game_mode = NodePath("../../../../..")
+scoreboard = NodePath("../../../../Preview/Score")
+
+[node name="Preview" parent="Player2" instance=ExtResource( 8 )]
+position = Vector2( -212, 65 )
+source = NodePath("../Preview/Queue/p1")
+read_input = true
+
+[node name="Score" type="NinePatchRect" parent="Player2/Preview"]
+self_modulate = Color( 0.815686, 0.815686, 0.815686, 1 )
+show_behind_parent = true
+margin_left = -200.0
+margin_top = 421.0
+margin_right = 64.0
+margin_bottom = 521.0
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 135, 135 )
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+
+[node name="Number" type="Node2D" parent="Player2/Preview/Score"]
+position = Vector2( 100, 51.5 )
+
+[node name="Anim" parent="Player2/Preview/Score/Number" instance=ExtResource( 9 )]
+
+[node name="Text" type="Label" parent="Player2/Preview/Score/Number"]
+margin_left = -100.0
+margin_top = -32.5
+margin_right = 100.0
+margin_bottom = 32.5
+custom_fonts/font = ExtResource( 7 )
+text = "0"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Pattern" type="NinePatchRect" parent="Player2"]
+self_modulate = Color( 0.81, 0.81, 0.81, 1 )
+show_behind_parent = true
+margin_left = -336.0
+margin_top = 895.0
+margin_bottom = 1090.0
+rect_pivot_offset = Vector2( -615.381, -201.938 )
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 135, 135 )
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Anim" type="AnimationPlayer" parent="Player2/Pattern"]
+anims/Ready = SubResource( 10 )
+anims/Start = SubResource( 11 )
+anims/Unready = SubResource( 12 )
+
+[node name="Footer" type="ColorRect" parent="Player2/Pattern"]
+self_modulate = Color( 0.81, 0.81, 0.81, 1 )
+margin_left = 304.0
+margin_right = 368.0
+margin_bottom = 195.0
+
+[node name="PatternSelector" parent="Player2/Pattern" instance=ExtResource( 11 )]
+self_modulate = Color( 100, 100, 100, 1 )
+position = Vector2( 641, -350 )
+scale = Vector2( 0.75, 0.75 )
+z_index = 1
+number = "2"
+opponent_container = NodePath("../../../Player1/PlayArea/VC/V/BlockContainer")
+opponent_selector = NodePath("../../../Player1/Pattern/PatternSelector")
+parent_animator = NodePath("../Anim")
+docked_position = Vector2( 184, 96 )
+docked_scale = Vector2( 0.5, 0.5 )
+raised_position = Vector2( 641, -350 )
+raised_scale = Vector2( 0.75, 0.75 )
+
+[node name="SelectYourPattern" type="Node2D" parent="Player2/Pattern"]
+position = Vector2( 641, -630 )
+z_index = 1
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Player2/Pattern/SelectYourPattern"]
+margin_left = -280.0
+margin_top = -80.0
+margin_right = 280.0
+margin_bottom = 80.0
+custom_fonts/font = SubResource( 8 )
+text = "Select your pattern"
+align = 1
+valign = 1
+autowrap = true
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Ready" type="Node2D" parent="Player2/Pattern"]
+visible = false
+position = Vector2( 641, -350 )
+scale = Vector2( 0.7, 0.7 )
+z_index = 1
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Player2/Pattern/Ready"]
+margin_left = -165.0
+margin_top = -40.0
+margin_right = 166.0
+margin_bottom = 40.0
+custom_fonts/font = SubResource( 9 )
+text = "Ready!"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Restart" parent="Player2/Pattern" instance=ExtResource( 6 )]
+visible = true
+position = Vector2( 641, -70 )
+z_index = 1
+
+[node name="PauseMenu" parent="." instance=ExtResource( 10 )]
+visible = false
+position = Vector2( 960, 540 )
+game_mode = NodePath("..")
+
+[node name="Rays" parent="." instance=ExtResource( 12 )]
+
+[editable path="Player1/PlayArea"]
+
+[editable path="Player2/PlayArea"]

@@ -1,0 +1,92 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://obj/border/border_outter.svg" type="Texture" id=1]
+[ext_resource path="res://obj/gameplay/player/ScoreAnim.tscn" type="PackedScene" id=2]
+[ext_resource path="res://obj/gameplay/player/StatsFont.tres" type="DynamicFont" id=3]
+
+[sub_resource type="Animation" id=1]
+length = 1.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.5, 0.8, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 0.659754, 1, 1 ),
+"update": 0,
+"values": [ -90.0, -90.0, -10.0, 0.0, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2, 0.5, 0.6, 0.7, 0.75, 0.8, 1.5 ),
+"transitions": PoolRealArray( 0.757859, 0.757859, 0.25, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1.5, 1.5 ), Vector2( 1.5, 1.5 ), Vector2( 1, 1 ), Vector2( 1.15, 1.15 ), Vector2( 1, 1 ), Vector2( 1.1, 1.1 ), Vector2( 1, 1 ), Vector2( 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2, 0.5, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="Score" type="NinePatchRect"]
+self_modulate = Color( 0.815686, 0.815686, 0.815686, 1 )
+show_behind_parent = true
+margin_top = 705.0
+margin_right = 172.0
+margin_bottom = 855.0
+texture = ExtResource( 1 )
+region_rect = Rect2( 0, 0, 135, 135 )
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Number" type="Node2D" parent="."]
+position = Vector2( 86, 104 )
+
+[node name="Anim" parent="Number" instance=ExtResource( 2 )]
+anims/Increment = SubResource( 1 )
+
+[node name="Text" type="Label" parent="Number"]
+margin_left = -86.0
+margin_top = -32.5
+margin_right = 86.0
+margin_bottom = 32.5
+custom_fonts/font = ExtResource( 3 )
+text = "0"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

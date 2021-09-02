@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="80"
+   height="80"
+   viewBox="0 0 80 80.000002"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   sodipodi:docname="smoke_puff1.svg"
+   inkscape:export-filename="/home/alfonso/Documents/Godot/Paroot/icon.png"
+   inkscape:export-xdpi="72"
+   inkscape:export-ydpi="72">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="7.7428193"
+     inkscape:cx="45.043248"
+     inkscape:cy="35.112226"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:showpageshadow="false"
+     units="px"
+     inkscape:object-nodes="true"
+     inkscape:window-width="1920"
+     inkscape:window-height="976"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:pagecheckerboard="true">
+    <inkscape:grid
+       type="xygrid"
+       id="grid4136"
+       originx="20"
+       originy="20" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(20,-992.3622)">
+    <path
+       style="fill:#ffffff;stroke:#666666;stroke-width:6;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 7.7409374,1029.2157 c 4.6377786,-11.1021 15.4972896,-2.4599 17.1042916,2.7219 3.906911,12.5979 -13.539895,15.6481 -17.4354968,15.4282 -20.3984892,-1.1518 -21.5243842,-23.3665 -17.3626085,-30.6778 4.7786208,-8.3949 22.9890423,-8.524 22.9890423,-8.524 0,0 -1.521977,-9.57487 12.527736,-8.39487 14.673922,1.23237 9.298939,15.75647 9.298939,15.75647 0,0 11.478405,1.3187 15.756535,10.2031 6.020632,12.503 -9.040635,21.9558 -9.040635,21.9558 0,0 3.449012,19.4741 -30.609006,17.1771 -29.384234,-1.9817 -17.6938129,-22.6015 -17.6938129,-22.6015"
+       id="path919"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cssscscscsc" />
+  </g>
+</svg>

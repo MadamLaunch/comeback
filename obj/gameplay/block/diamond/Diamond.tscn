@@ -1,0 +1,291 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://obj/gameplay/block/Block.gd" type="Script" id=1]
+[ext_resource path="res://obj/gameplay/block/diamond/diamond_sparkle.svg" type="Texture" id=2]
+[ext_resource path="res://obj/gameplay/block/diamond/diamond.svg" type="Texture" id=3]
+[ext_resource path="res://obj/gameplay/block/diamond/diamond_gloss1.svg" type="Texture" id=4]
+[ext_resource path="res://obj/gameplay/block/diamond/diamond_gloss2.svg" type="Texture" id=5]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Descend 1"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 80 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "descend"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:falling")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Descend 2"
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.666, 0.666 ), Vector2( 1, 1 ), Vector2( 0.333, 0.333 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Descend 3"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "descend"
+} ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Normal"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:falling")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:falling")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+
+[sub_resource type="Animation" id=7]
+length = 0.001
+
+[sub_resource type="Animation" id=8]
+length = 1.05
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite/Base:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0.498039, 0.498039, 1 ), Color( 1, 1, 0.486275, 1 ), Color( 0.509804, 1, 0.509804, 1 ), Color( 0.505882, 0.752941, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 0.501961, 1, 1 ), Color( 0.6, 0.6, 0.6, 1 ), Color( 1, 0.498039, 0.498039, 1 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+length = 2.3
+loop = true
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite/Gloss/Top Gloss:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.65, 1.89, 2.13 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.603922 ), Color( 1, 1, 1, 0.603922 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.603922 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite/Gloss:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.21, 0.35, 0.38, 0.51, 1.03, 1.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.584314 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.584314 ), Color( 0.780392, 0.780392, 0.780392, 0.392157 ), Color( 1, 1, 1, 0.584314 ) ]
+}
+
+[sub_resource type="Gradient" id=10]
+offsets = PoolRealArray( 0, 0.122449, 0.605442 )
+colors = PoolColorArray( 1, 1, 1, 0.501961, 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=11]
+gradient = SubResource( 10 )
+
+[sub_resource type="Curve" id=12]
+_data = [ Vector2( 0, 0.2305 ), 0.0, 0.0, 0, 0, Vector2( 0.228303, 0.9961 ), 0.0, 0.0, 0, 0, Vector2( 0.504767, 0.00169992 ), 0.0, 0.0, 0, 0, Vector2( 0.997316, 0 ), -0.00376724, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=13]
+curve = SubResource( 12 )
+
+[sub_resource type="ParticlesMaterial" id=14]
+emission_shape = 1
+emission_sphere_radius = 30.0
+flag_disable_z = true
+spread = 60.0
+gravity = Vector3( 0, 0, 0 )
+angular_velocity = 1.13136e+21
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 0.7
+scale_random = 0.2
+scale_curve = SubResource( 13 )
+color_ramp = SubResource( 11 )
+
+[node name="Diamond" type="Node2D" groups=[
+"HideOnPause",
+]]
+script = ExtResource( 1 )
+color = -1
+is_diamond = true
+
+[node name="Anim" type="AnimationPlayer" parent="."]
+"anims/Descend 1" = SubResource( 1 )
+"anims/Descend 2" = SubResource( 2 )
+"anims/Descend 3" = SubResource( 3 )
+anims/Normal = SubResource( 4 )
+anims/Slam = SubResource( 5 )
+
+[node name="Anim2" type="AnimationPlayer" parent="."]
+anims/Flash = SubResource( 6 )
+anims/Stop = SubResource( 7 )
+
+[node name="Anim3" type="AnimationPlayer" parent="."]
+autoplay = "Cycle"
+playback_speed = 1.2
+anims/Cycle = SubResource( 8 )
+
+[node name="Anim4" type="AnimationPlayer" parent="."]
+autoplay = "Gloss"
+anims/Gloss = SubResource( 9 )
+
+[node name="Sprite" type="Node2D" parent="."]
+
+[node name="Base" type="Sprite" parent="Sprite"]
+modulate = Color( 1, 0.905656, 1, 1 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Gloss" type="Sprite" parent="Sprite"]
+self_modulate = Color( 1, 1, 1, 0.584314 )
+texture = ExtResource( 4 )
+centered = false
+
+[node name="Top Gloss" type="Sprite" parent="Sprite/Gloss"]
+self_modulate = Color( 1, 1, 1, 0.899915 )
+texture = ExtResource( 5 )
+centered = false
+
+[node name="Sparkles" type="Particles2D" parent="Sprite"]
+position = Vector2( 40, 40 )
+amount = 4
+lifetime = 1.5
+process_material = SubResource( 14 )
+texture = ExtResource( 2 )

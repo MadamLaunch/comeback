@@ -1,0 +1,380 @@
+[gd_scene load_steps=29 format=2]
+
+[ext_resource path="res://sounds/3 Pop Sounds by wubitog/pop1.ogg" type="AudioStream" id=1]
+[ext_resource path="res://obj/gameplay/block/gem_pattern.svg" type="Texture" id=2]
+[ext_resource path="res://obj/gameplay/block/explosion/flash_gem.svg" type="Texture" id=3]
+[ext_resource path="res://obj/gameplay/block/explosion/smoke_star.svg" type="Texture" id=4]
+[ext_resource path="res://obj/gameplay/block/explosion/smoke_puff.svg" type="Texture" id=5]
+
+
+
+
+
+
+
+
+[sub_resource type="Animation" id=1]
+resource_name = "Explode"
+length = 4.0
+loop = true
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("DustL:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("DustR:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Flash:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Ring/W:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Ring/S:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Ring/E:emitting")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Ring/N:emitting")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Sprite:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = false
+tracks/8/keys = {
+"times": PoolRealArray( 0.4, 0.5, 4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -80 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/9/type = "method"
+tracks/9/path = NodePath(".")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+tracks/10/type = "audio"
+tracks/10/path = NodePath("Audio")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.13,
+"stream": ExtResource( 1 )
+} ],
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0, 0.0714286 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+
+[sub_resource type="ParticlesMaterial" id=4]
+flag_disable_z = true
+gravity = Vector3( 0, -98, 0 )
+angular_velocity = 6.02558e-44
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+color_ramp = SubResource( 3 )
+
+[sub_resource type="Curve" id=5]
+min_value = -360.0
+max_value = 360.0
+_data = [ Vector2( 0, 1 ), 0.0, -29.4519, 0, 0, Vector2( 0.503317, 32.472 ), 0.0, 25.5133, 0, 1, Vector2( 1, 45.144 ), 25.5133, 0.0, 1, 0 ]
+
+[sub_resource type="CurveTexture" id=6]
+curve = SubResource( 5 )
+
+[sub_resource type="Gradient" id=7]
+offsets = PoolRealArray( 0, 0.0634921, 0.119048 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.914062, 0, 1 )
+
+[sub_resource type="GradientTexture" id=8]
+gradient = SubResource( 7 )
+
+[sub_resource type="Curve" id=9]
+_data = [ Vector2( 0, 1 ), 0.0, 14.0292, 0, 0, Vector2( 0.0587889, 1 ), -1.0965, -1.0965, 0, 0, Vector2( 0.111867, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=10]
+curve = SubResource( 9 )
+
+[sub_resource type="ParticlesMaterial" id=11]
+flag_disable_z = true
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 600.0
+angular_velocity = 4.57706e-41
+angular_velocity_curve = SubResource( 6 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+damping = 1200.0
+angle = 360.0
+angle_random = 1.0
+scale_curve = SubResource( 10 )
+color_ramp = SubResource( 8 )
+
+[sub_resource type="Curve" id=12]
+min_value = -360.0
+max_value = 360.0
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.0919627, -193.248 ), -2571.08, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=13]
+curve = SubResource( 12 )
+
+[sub_resource type="Gradient" id=14]
+offsets = PoolRealArray( 0, 0.214286, 0.626984, 0.68254 )
+colors = PoolColorArray( 1, 1, 1, 1, 0.398438, 0.398438, 0.398438, 1, 0, 0, 0, 1, 0, 0, 0, 0 )
+
+[sub_resource type="GradientTexture" id=15]
+gradient = SubResource( 14 )
+
+[sub_resource type="Curve" id=16]
+max_value = 100.0
+_data = [ Vector2( 0, 100 ), 0.0, -15.0466, 0, 0, Vector2( 0.145041, 0 ), -1245.71, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=17]
+curve = SubResource( 16 )
+
+[sub_resource type="Curve" id=18]
+_data = [ Vector2( 0, 0.7332 ), 0.0, 9.27754, 0, 0, Vector2( 0.125136, 0.566 ), -3.86852, -3.86852, 0, 0, Vector2( 0.443605, 0 ), 0.0456029, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=19]
+curve = SubResource( 18 )
+
+[sub_resource type="ParticlesMaterial" id=20]
+emission_shape = 2
+emission_box_extents = Vector3( 10, 0, 0 )
+flag_disable_z = true
+spread = 20.0
+flatness = 1.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = -150.0
+initial_velocity_random = 0.8
+angular_velocity = 50.0
+angular_velocity_random = 0.5
+angular_velocity_curve = SubResource( 13 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = -100.0
+radial_accel = 46.8
+radial_accel_random = 1.0
+damping = 150.0
+damping_curve = SubResource( 17 )
+angle = 360.0
+angle_random = 1.0
+scale_curve = SubResource( 19 )
+color_ramp = SubResource( 15 )
+
+[sub_resource type="Curve" id=21]
+min_value = -360.0
+max_value = 360.0
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.125136, 169.488 ), 1475.87, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=22]
+curve = SubResource( 21 )
+
+[sub_resource type="ParticlesMaterial" id=23]
+emission_shape = 2
+emission_box_extents = Vector3( 10, 0, 0 )
+flag_disable_z = true
+spread = 20.0
+flatness = 1.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 150.0
+initial_velocity_random = 0.8
+angular_velocity = -1.0
+angular_velocity_random = 0.5
+angular_velocity_curve = SubResource( 22 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = -100.0
+radial_accel = 46.8
+radial_accel_random = 1.0
+damping = 150.0
+damping_curve = SubResource( 17 )
+angle = 360.0
+angle_random = 1.0
+scale_curve = SubResource( 19 )
+color_ramp = SubResource( 15 )
+
+[node name="BlockExplosion" type="Node2D"]
+z_index = 2
+
+[node name="Anim" type="AnimationPlayer" parent="."]
+autoplay = "Explode"
+anims/Explode = SubResource( 1 )
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="."]
+bus = "SFX"
+
+[node name="Sprite" type="Sprite" parent="."]
+visible = false
+modulate = Color( 1, 0, 0, 1 )
+texture = ExtResource( 2 )
+centered = false
+hframes = 6
+frame = 2
+
+[node name="Flash" type="Particles2D" parent="."]
+position = Vector2( 40, 40 )
+emitting = false
+amount = 1
+lifetime = 1.5
+one_shot = true
+process_material = SubResource( 4 )
+texture = ExtResource( 3 )
+
+[node name="Ring" type="Node2D" parent="."]
+position = Vector2( 40, 40 )
+scale = Vector2( 0.4, 0.4 )
+
+[node name="E" type="Particles2D" parent="Ring"]
+emitting = false
+amount = 4
+lifetime = 4.0
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource( 11 )
+texture = ExtResource( 4 )
+
+[node name="S" type="Particles2D" parent="Ring"]
+rotation = 1.5708
+emitting = false
+amount = 4
+lifetime = 4.0
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource( 11 )
+texture = ExtResource( 4 )
+
+[node name="W" type="Particles2D" parent="Ring"]
+rotation = 3.14159
+emitting = false
+amount = 4
+lifetime = 4.0
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource( 11 )
+texture = ExtResource( 4 )
+
+[node name="N" type="Particles2D" parent="Ring"]
+rotation = 4.71239
+emitting = false
+amount = 4
+lifetime = 4.0
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource( 11 )
+texture = ExtResource( 4 )
+
+[node name="DustL" type="Particles2D" parent="."]
+position = Vector2( 10, 65 )
+emitting = false
+amount = 3
+lifetime = 4.0
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource( 20 )
+texture = ExtResource( 5 )
+
+[node name="DustR" type="Particles2D" parent="."]
+position = Vector2( 70, 65 )
+emitting = false
+amount = 3
+lifetime = 4.0
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource( 23 )
+texture = ExtResource( 5 )

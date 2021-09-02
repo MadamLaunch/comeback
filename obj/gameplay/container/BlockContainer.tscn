@@ -1,0 +1,181 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://obj/gameplay/container/BlockContainer.gd" type="Script" id=1]
+[ext_resource path="res://obj/gameplay/container/grid.png" type="Texture" id=3]
+[ext_resource path="res://obj/gameplay/block/ghost/Ghost.tscn" type="PackedScene" id=4]
+[ext_resource path="res://obj/gameplay/container/Cursor.tscn" type="PackedScene" id=5]
+[ext_resource path="res://obj/gameplay/container/Result.tscn" type="PackedScene" id=6]
+
+[sub_resource type="Animation" id=1]
+resource_name = "End Turn"
+length = 0.4
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "countdown"
+}, {
+"args": [  ],
+"method": "add_piece"
+} ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 1.2
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.8 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "shelve"
+} ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.8 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "detonate"
+} ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.9, 1.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "settle"
+}, {
+"args": [  ],
+"method": "add_piece"
+} ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Next Turn"
+length = 0.4
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "add_piece"
+} ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.4
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "settle"
+} ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "Re-settle All"
+length = 0.4
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "settle_all"
+} ]
+}
+
+[node name="BlockContainer" type="Node2D" groups=[
+"BlockContainer",
+]]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [  ]
+}
+color = 1
+
+[node name="Anim" type="AnimationPlayer" parent="."]
+"anims/End Turn" = SubResource( 1 )
+"anims/Garbage Conversion" = SubResource( 2 )
+"anims/Next Turn" = SubResource( 3 )
+anims/Re-settle = SubResource( 4 )
+"anims/Re-settle All" = SubResource( 5 )
+
+[node name="Grid" type="Sprite" parent="."]
+self_modulate = Color( 0.2, 0.2, 0.2, 1 )
+z_index = -9
+z_as_relative = false
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 560, 1040 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Background" type="ColorRect" parent="Grid"]
+show_behind_parent = true
+margin_right = 560.0
+margin_bottom = 1040.0
+mouse_filter = 2
+color = Color( 0.101961, 0.101961, 0.101961, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Ghost1" parent="." instance=ExtResource( 4 )]
+position = Vector2( 0, -80 )
+persistent = true
+
+[node name="Ghost2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 0, -80 )
+persistent = true
+partner = true
+
+[node name="Cursor" parent="." instance=ExtResource( 5 )]
+position = Vector2( 240, 0 )
+
+[node name="Result" parent="." instance=ExtResource( 6 )]

@@ -1,0 +1,61 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://obj/lobby/LobbySettings.gd" type="Script" id=1]
+[ext_resource path="res://obj/lobby/menu/LobbySettingsMenu.tscn" type="PackedScene" id=3]
+[ext_resource path="res://obj/lobby/presets/PresetDeleteWindow.tscn" type="PackedScene" id=4]
+[ext_resource path="res://obj/lobby/presets/PresetNameWindow.tscn" type="PackedScene" id=5]
+
+[node name="MainLobby" type="Node2D" groups=[
+"Menu System",
+]]
+script = ExtResource( 1 )
+
+[node name="Menu1" parent="." instance=ExtResource( 3 )]
+number_node = NodePath("../../MainLobby/Menu1/Submenus/Control/GameplaySettings/Number")
+color_node = NodePath("../../MainLobby/Menu1/Submenus/Control/GameplaySettings/Color")
+starting_node = NodePath("../../MainLobby/Menu1/Submenus/Control/GameplaySettings/Number")
+gameplay_settings_node = NodePath("../../MainLobby/Menu1/Submenus/Control/GameplaySettings/Preset")
+
+[node name="Menu2" parent="." instance=ExtResource( 3 )]
+margin_left = 480.0
+margin_right = 960.0
+number = 2
+color = 1
+number_node = NodePath("../../MainLobby/Menu2/Submenus/Control/GameplaySettings/Number")
+color_node = NodePath("../../MainLobby/Menu2/Submenus/Control/GameplaySettings/Color")
+starting_node = NodePath("../../MainLobby/Menu2/Submenus/Control/GameplaySettings/Number")
+gameplay_settings_node = NodePath("../../MainLobby/Menu2/Submenus/Control/GameplaySettings/Preset")
+
+[node name="Menu3" parent="." instance=ExtResource( 3 )]
+margin_left = 960.0
+margin_right = 1440.0
+number = 3
+color = 2
+number_node = NodePath("../../MainLobby/Menu3/Submenus/Control/GameplaySettings/Number")
+color_node = NodePath("../../MainLobby/Menu3/Submenus/Control/GameplaySettings/Color")
+starting_node = NodePath("../../MainLobby/Menu3/Submenus/Control/GameplaySettings/Number")
+gameplay_settings_node = NodePath("../../MainLobby/Menu3/Submenus/Control/GameplaySettings/Preset")
+
+[node name="Menu4" parent="." instance=ExtResource( 3 )]
+margin_left = 1440.0
+margin_right = 1920.0
+number = 4
+color = 3
+number_node = NodePath("../../MainLobby/Menu4/Submenus/Control/GameplaySettings/Number")
+color_node = NodePath("../../MainLobby/Menu4/Submenus/Control/GameplaySettings/Color")
+starting_node = NodePath("../../MainLobby/Menu4/Submenus/Control/GameplaySettings/Number")
+gameplay_settings_node = NodePath("../../MainLobby/Menu4/Submenus/Control/GameplaySettings/Preset")
+
+[node name="PresetNameWindow" parent="." instance=ExtResource( 5 )]
+visible = false
+
+[node name="PresetDeleteWindow" parent="." instance=ExtResource( 4 )]
+visible = false
+[connection signal="launch" from="Menu1" to="." method="start_game"]
+[connection signal="reorder" from="Menu1" to="." method="reorder"]
+[connection signal="launch" from="Menu2" to="." method="start_game"]
+[connection signal="reorder" from="Menu2" to="." method="reorder"]
+[connection signal="launch" from="Menu3" to="." method="start_game"]
+[connection signal="reorder" from="Menu3" to="." method="reorder"]
+[connection signal="launch" from="Menu4" to="." method="start_game"]
+[connection signal="reorder" from="Menu4" to="." method="reorder"]

@@ -1,0 +1,175 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://fonts/CooperHewitt-HeavyItalic.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://obj/border/border_outter.svg" type="Texture" id=2]
+[ext_resource path="res://obj/border/border_inner.svg" type="Texture" id=3]
+[ext_resource path="res://obj/lobby/presets/PresetNameWindow.gd" type="Script" id=4]
+
+
+[sub_resource type="Animation" id=1]
+resource_name = "Fade In"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Start"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="DynamicFont" id=3]
+size = 64
+extra_spacing_top = 3
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 30
+extra_spacing_bottom = -7
+font_data = ExtResource( 1 )
+
+[node name="PresetNameWindow" type="ColorRect" groups=[
+"PresetNameWindow",
+]]
+margin_right = 1920.0
+margin_bottom = 1080.0
+color = Color( 0, 0, 0, 0.541176 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Anim" type="AnimationPlayer" parent="."]
+autoplay = "Start"
+"anims/Fade In" = SubResource( 1 )
+anims/Start = SubResource( 2 )
+
+[node name="Center" type="CenterContainer" parent="."]
+margin_right = 1920.0
+margin_bottom = 1080.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Outline" type="NinePatchRect" parent="Center"]
+modulate = Color( 0.815686, 0.815686, 0.815686, 1 )
+margin_left = 660.0
+margin_top = 365.0
+margin_right = 1260.0
+margin_bottom = 715.0
+rect_min_size = Vector2( 600, 350 )
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 135, 135 )
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+
+[node name="Background" type="ColorRect" parent="Center"]
+margin_left = 677.0
+margin_top = 381.0
+margin_right = 1243.0
+margin_bottom = 699.0
+rect_min_size = Vector2( 566, 318 )
+color = Color( 0.101961, 0.101961, 0.101961, 1 )
+
+[node name="VBox" type="VBoxContainer" parent="Center"]
+margin_left = 720.0
+margin_top = 381.0
+margin_right = 1200.0
+margin_bottom = 699.0
+rect_min_size = Vector2( 480, 318 )
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Center/VBox"]
+margin_top = 64.0
+margin_right = 480.0
+margin_bottom = 201.0
+custom_fonts/font = SubResource( 3 )
+text = "p1
+save preset"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="TextEdit" type="TextEdit" parent="Center/VBox"]
+margin_top = 205.0
+margin_right = 480.0
+margin_bottom = 245.0
+rect_min_size = Vector2( 0, 40 )
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/background_color = Color( 0.101961, 0.101961, 0.101961, 1 )
+text = "CUSTOM"
+syntax_highlighting = true
+
+[node name="Line" type="ColorRect" parent="Center/VBox"]
+margin_top = 249.0
+margin_right = 480.0
+margin_bottom = 254.0
+rect_min_size = Vector2( 0, 5 )
+
+[node name="Border" type="NinePatchRect" parent="Center"]
+margin_left = 660.0
+margin_top = 365.0
+margin_right = 1260.0
+margin_bottom = 715.0
+rect_min_size = Vector2( 600, 350 )
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 135, 135 )
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+__meta__ = {
+"_edit_lock_": true
+}
+[connection signal="text_changed" from="Center/VBox/TextEdit" to="." method="_uppercase"]

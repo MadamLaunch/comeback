@@ -1,0 +1,43 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://obj/lobby/input/InputMapEntry.gd" type="Script" id=1]
+
+
+[node name="InputMapEntry" type="HBoxContainer"]
+margin_right = 460.0
+margin_bottom = 64.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Action" type="Label" parent="."]
+margin_right = 364.0
+margin_bottom = 64.0
+size_flags_horizontal = 3
+size_flags_vertical = 5
+text = "Label"
+valign = 1
+uppercase = true
+
+[node name="Keystroke" type="Label" parent="."]
+margin_left = 368.0
+margin_right = 378.0
+margin_bottom = 64.0
+size_flags_vertical = 5
+text = "--"
+align = 2
+valign = 1
+
+[node name="Spacer" type="Panel" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 382.0
+margin_right = 392.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 10, 0 )
+
+[node name="Gamepad" type="TextureRect" parent="."]
+margin_left = 396.0
+margin_right = 460.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 64, 64 )

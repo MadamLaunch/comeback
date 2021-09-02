@@ -1,0 +1,296 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://obj/gameplay/block/Block.gd" type="Script" id=1]
+[ext_resource path="res://obj/gameplay/block/ghost/gem_symbols.svg" type="Texture" id=3]
+[ext_resource path="res://obj/gameplay/block/garbage/numbers.svg" type="Texture" id=4]
+[ext_resource path="res://obj/gameplay/block/garbage/gem.svg" type="Texture" id=5]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Alternate"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite/Number:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite/Symbol:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Count Down"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite/Number:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite/Symbol:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite/Number:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.75, 0.75 ), Vector2( 0.6, 0.6 ), Vector2( 0.6, 0.6 ) ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath("Anim")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "Alternate", -1, 1.0, false ],
+"method": "play"
+} ]
+}
+
+[sub_resource type="Animation" id=3]
+loop = true
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "descend"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:falling")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=4]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:falling")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:exploding")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "explode"
+} ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 1 ),
+"transitions": PoolRealArray( 1.86607, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -1040 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:falling")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "Zero"
+step = 0.05
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.7 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_replace"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite/Number:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite/Symbol:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite/Number:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.313726, 0.313726, 0.313726, 1 ), Color( 1, 1, 1, 1 ), Color( 0.313726, 0.313726, 0.313726, 1 ), Color( 1, 1, 1, 1 ), Color( 0.313726, 0.313726, 0.313726, 1 ), Color( 1, 1, 1, 1 ), Color( 0.313726, 0.313726, 0.313726, 1 ), Color( 1, 1, 1, 1 ), Color( 0.313726, 0.313726, 0.313726, 1 ), Color( 1, 1, 1, 1 ), Color( 0.313726, 0.313726, 0.313726, 1 ), Color( 1, 1, 1, 1 ), Color( 0.313726, 0.313726, 0.313726, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "Settle"
+length = 0.3
+
+[node name="Garbage" type="Node2D" groups=[
+"HideOnPause",
+]]
+script = ExtResource( 1 )
+is_garbage = true
+
+[node name="Anim" type="AnimationPlayer" parent="."]
+autoplay = "Alternate"
+anims/Alternate = SubResource( 1 )
+"anims/Count Down" = SubResource( 2 )
+"anims/Descend 1" = SubResource( 3 )
+"anims/Descend 2" = SubResource( 4 )
+anims/Explode = SubResource( 5 )
+"anims/Garbage Drop" = SubResource( 6 )
+anims/Stop = SubResource( 7 )
+anims/Zero = SubResource( 8 )
+
+[node name="Anim2" type="AnimationPlayer" parent="."]
+anims/Settle = SubResource( 9 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 5 )
+centered = false
+
+[node name="Backdrop" type="ColorRect" parent="Sprite"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 70.0
+margin_bottom = 70.0
+color = Color( 0.0627451, 0.0627451, 0.0627451, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Number" type="Sprite" parent="Sprite"]
+position = Vector2( 40, 40 )
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 4 )
+hframes = 10
+
+[node name="Symbol" type="Sprite" parent="Sprite"]
+visible = false
+position = Vector2( 40, 40 )
+texture = ExtResource( 3 )
+hframes = 6

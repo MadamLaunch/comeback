@@ -1,0 +1,161 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://obj/lobby/item/LobbySettingsItem_Slider.gd" type="Script" id=1]
+[ext_resource path="res://obj/lobby/item/triangle_r.svg" type="Texture" id=2]
+[ext_resource path="res://obj/lobby/item/triangle_l.svg" type="Texture" id=3]
+[ext_resource path="res://obj/lobby/item/LobbySettingsItem_Prompt.theme" type="Theme" id=4]
+
+
+[sub_resource type="Animation" id=1]
+resource_name = "Wave"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -10, 0 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Pulse"
+length = 0.0666667
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0166667, 0.0666667 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.3, 1.3 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Wave"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 10, 0 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Pulse"
+length = 0.0666667
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0166667, 0.0666667 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.3, 1.3 ), Vector2( 1, 1 ) ]
+}
+
+[node name="LobbySettingsSliderItem" type="VBoxContainer" groups=[
+"LobbySettingItem",
+"VolumeSlider",
+]]
+margin_right = 40.0
+margin_bottom = 40.0
+custom_constants/separation = 10
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_right = 144.0
+margin_bottom = 14.0
+text = "Label"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="Container" type="HBoxContainer" parent="."]
+margin_top = 24.0
+margin_right = 144.0
+margin_bottom = 44.0
+alignment = 1
+
+[node name="L" type="Button" parent="Container"]
+margin_right = 60.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 60, 0 )
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+flat = true
+
+[node name="SpriteAnchor" type="Node2D" parent="Container/L"]
+modulate = Color( 1, 1, 1, 0.27 )
+
+[node name="Sprite" type="Sprite" parent="Container/L/SpriteAnchor"]
+texture = ExtResource( 3 )
+
+[node name="Anim1" type="AnimationPlayer" parent="Container/L/SpriteAnchor/Sprite"]
+anims/Wave = SubResource( 1 )
+
+[node name="Anim2" type="AnimationPlayer" parent="Container/L/SpriteAnchor/Sprite"]
+anims/Pulse = SubResource( 2 )
+
+[node name="HSlider" type="HSlider" parent="Container"]
+margin_left = 64.0
+margin_right = 80.0
+margin_bottom = 16.0
+size_flags_horizontal = 3
+max_value = 255.0
+ticks_on_borders = true
+
+[node name="R" type="Button" parent="Container"]
+margin_left = 84.0
+margin_right = 144.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 60, 0 )
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+flat = true
+
+[node name="SpriteAnchor" type="Node2D" parent="Container/R"]
+modulate = Color( 1, 1, 1, 0.27 )
+
+[node name="Sprite" type="Sprite" parent="Container/R/SpriteAnchor"]
+texture = ExtResource( 2 )
+
+[node name="Anim1" type="AnimationPlayer" parent="Container/R/SpriteAnchor/Sprite"]
+anims/Wave = SubResource( 3 )
+
+[node name="Anim2" type="AnimationPlayer" parent="Container/R/SpriteAnchor/Sprite"]
+anims/Pulse = SubResource( 4 )
+
+[node name="Value" type="Label" parent="."]
+margin_top = 54.0
+margin_right = 144.0
+margin_bottom = 74.0
+theme = ExtResource( 4 )
+text = "0"
+align = 1
+valign = 1
+[connection signal="pressed" from="Container/L" to="." method="shift_value" binds= [ -1 ]]
+[connection signal="mouse_entered" from="Container/HSlider" to="." method="activate"]
+[connection signal="value_changed" from="Container/HSlider" to="." method="_synchronize"]
+[connection signal="pressed" from="Container/R" to="." method="shift_value" binds= [ 1 ]]

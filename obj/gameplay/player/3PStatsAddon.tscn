@@ -1,0 +1,78 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://fonts/CooperHewitt-HeavyItalic.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://obj/border/border_outter.svg" type="Texture" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 64
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+extra_spacing_bottom = -17
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 64
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+extra_spacing_bottom = -17
+font_data = ExtResource( 1 )
+
+[node name="Stats" type="Node2D" groups=[
+"Optional Stats",
+]]
+z_index = -1
+
+[node name="Score" type="NinePatchRect" parent="."]
+self_modulate = Color( 0.82, 0.82, 0.82, 1 )
+margin_top = -114.0
+margin_right = 610.0
+margin_bottom = -20.0
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 135, 135 )
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Text" type="Label" parent="Score"]
+margin_top = -1.0
+margin_right = 610.0
+margin_bottom = 93.0
+custom_fonts/font = SubResource( 1 )
+text = "0"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Time" type="NinePatchRect" parent="."]
+self_modulate = Color( 0.82, 0.82, 0.82, 1 )
+margin_top = 1034.0
+margin_right = 610.0
+margin_bottom = 1183.0
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 135, 135 )
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Text" type="Label" parent="Time"]
+margin_left = 0.333336
+margin_top = 55.0
+margin_right = 610.333
+margin_bottom = 149.0
+custom_fonts/font = SubResource( 2 )
+text = "0:00:00.0"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

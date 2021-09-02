@@ -1,0 +1,333 @@
+[gd_scene load_steps=24 format=2]
+
+[ext_resource path="res://obj/gameplay/pattern/Pattern1.tscn" type="PackedScene" id=1]
+[ext_resource path="res://obj/gameplay/pattern/Pattern3.tscn" type="PackedScene" id=2]
+[ext_resource path="res://obj/gameplay/pattern/Pattern5.tscn" type="PackedScene" id=3]
+[ext_resource path="res://obj/gameplay/pattern/Pattern4.tscn" type="PackedScene" id=4]
+[ext_resource path="res://obj/gameplay/pattern/Pattern2.tscn" type="PackedScene" id=5]
+[ext_resource path="res://obj/lobby/item/triangle_r_highlight.svg" type="Texture" id=6]
+[ext_resource path="res://obj/lobby/item/triangle_l_highlight.svg" type="Texture" id=7]
+[ext_resource path="res://obj/gameplay/pattern/PatternSelector.gd" type="Script" id=8]
+[ext_resource path="res://obj/gameplay/pattern/SingleColor5.tscn" type="PackedScene" id=9]
+[ext_resource path="res://obj/gameplay/pattern/SingleColor1.tscn" type="PackedScene" id=10]
+[ext_resource path="res://obj/gameplay/pattern/SingleColor6.tscn" type="PackedScene" id=11]
+[ext_resource path="res://obj/gameplay/pattern/SingleColor4.tscn" type="PackedScene" id=12]
+[ext_resource path="res://obj/gameplay/pattern/SingleColor3.tscn" type="PackedScene" id=13]
+[ext_resource path="res://obj/gameplay/pattern/SingleColor2.tscn" type="PackedScene" id=14]
+[ext_resource path="res://obj/gameplay/pattern/SingleColor7.tscn" type="PackedScene" id=15]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Wave"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 45, 160 ), Vector2( 35, 160 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Pulse"
+length = 0.0666667
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0166667, 0.0666667 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.6, 1.6 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 35, 160 ), Vector2( 45, 160 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.0666667
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0166667, 0.0666667 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.6, 1.6 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "Wave"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 280, 45 ), Vector2( 280, 35 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 0.0666667
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0166667, 0.0666667 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.6, 1.6 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "Wave"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 280, 35 ), Vector2( 280, 45 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+length = 0.0666667
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0166667, 0.0666667 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.6, 1.6 ), Vector2( 1, 1 ) ]
+}
+
+[node name="PatternSelector" type="Node2D"]
+script = ExtResource( 8 )
+
+[node name="L" type="Button" parent="."]
+margin_left = -360.0
+margin_top = -160.0
+margin_right = -280.0
+margin_bottom = 160.0
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Anim1" type="AnimationPlayer" parent="L"]
+autoplay = "Wave"
+anims/Wave = SubResource( 1 )
+
+[node name="Anim2" type="AnimationPlayer" parent="L"]
+anims/Pulse = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="L"]
+position = Vector2( 45, 160 )
+texture = ExtResource( 7 )
+
+[node name="R" type="Button" parent="."]
+margin_left = 280.0
+margin_top = -160.0
+margin_right = 360.0
+margin_bottom = 160.0
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Anim1" type="AnimationPlayer" parent="R"]
+autoplay = "Wave"
+anims/Wave = SubResource( 3 )
+
+[node name="Anim2" type="AnimationPlayer" parent="R"]
+anims/Pulse = SubResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="R"]
+position = Vector2( 40, 160 )
+texture = ExtResource( 6 )
+
+[node name="U" type="Button" parent="."]
+margin_left = -280.0
+margin_top = -240.0
+margin_right = 280.0
+margin_bottom = -160.0
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Anim1" type="AnimationPlayer" parent="U"]
+autoplay = "Wave"
+anims/Wave = SubResource( 5 )
+
+[node name="Anim2" type="AnimationPlayer" parent="U"]
+anims/Pulse = SubResource( 6 )
+
+[node name="Sprite" type="Sprite" parent="U"]
+position = Vector2( 280, 45 )
+rotation = 1.5708
+texture = ExtResource( 7 )
+
+[node name="D" type="Button" parent="."]
+margin_left = -280.0
+margin_top = 160.0
+margin_right = 280.0
+margin_bottom = 240.0
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Anim1" type="AnimationPlayer" parent="D"]
+autoplay = "Wave"
+anims/Wave = SubResource( 7 )
+
+[node name="Anim2" type="AnimationPlayer" parent="D"]
+anims/Pulse = SubResource( 8 )
+
+[node name="Sprite" type="Sprite" parent="D"]
+position = Vector2( 280, 35 )
+rotation = 1.5708
+texture = ExtResource( 6 )
+
+[node name="Row0" type="Panel" parent="."]
+margin_left = -280.0
+margin_top = -160.0
+margin_right = 280.0
+margin_bottom = 160.0
+rect_min_size = Vector2( 560, 320 )
+rect_clip_content = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Pattern0" parent="Row0" instance=ExtResource( 1 )]
+margin_right = 0.0
+margin_bottom = 0.0
+
+[node name="Pattern1" parent="Row0" instance=ExtResource( 5 )]
+visible = false
+margin_right = 0.0
+margin_bottom = 0.0
+
+[node name="Pattern2" parent="Row0" instance=ExtResource( 2 )]
+visible = false
+margin_right = 0.0
+margin_bottom = 0.0
+
+[node name="Pattern3" parent="Row0" instance=ExtResource( 4 )]
+visible = false
+margin_right = 0.0
+margin_bottom = 0.0
+
+[node name="Pattern4" parent="Row0" instance=ExtResource( 3 )]
+visible = false
+
+[node name="Row1" type="Panel" parent="."]
+visible = false
+margin_left = -280.0
+margin_top = -160.0
+margin_right = 280.0
+margin_bottom = 160.0
+rect_clip_content = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Pattern0" parent="Row1" instance=ExtResource( 10 )]
+margin_right = 0.0
+margin_bottom = 0.0
+
+[node name="Pattern1" parent="Row1" instance=ExtResource( 14 )]
+visible = false
+margin_right = 0.0
+margin_bottom = 0.0
+
+[node name="Pattern2" parent="Row1" instance=ExtResource( 13 )]
+visible = false
+margin_right = 0.0
+margin_bottom = 0.0
+
+[node name="Pattern3" parent="Row1" instance=ExtResource( 12 )]
+visible = false
+margin_right = 0.0
+margin_bottom = 0.0
+
+[node name="Pattern4" parent="Row1" instance=ExtResource( 9 )]
+visible = false
+margin_right = 0.0
+margin_bottom = 0.0
+
+[node name="Pattern5" parent="Row1" instance=ExtResource( 11 )]
+visible = false
+margin_right = 0.0
+margin_bottom = 0.0
+
+[node name="Pattern6" parent="Row1" instance=ExtResource( 15 )]
+visible = false
+
+[node name="Ready" type="Button" parent="."]
+margin_left = -280.0
+margin_top = -160.0
+margin_right = 280.0
+margin_bottom = 160.0
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="L" to="." method="shift_pattern" binds= [ -1 ]]
+[connection signal="pressed" from="L" to="L/Anim2" method="stop"]
+[connection signal="pressed" from="L" to="L/Anim2" method="play" binds= [ "Pulse" ]]
+[connection signal="pressed" from="R" to="." method="shift_pattern" binds= [ 1 ]]
+[connection signal="pressed" from="R" to="R/Anim2" method="stop"]
+[connection signal="pressed" from="R" to="R/Anim2" method="play" binds= [ "Pulse" ]]
+[connection signal="pressed" from="U" to="." method="shift_row"]
+[connection signal="pressed" from="U" to="U/Anim2" method="stop"]
+[connection signal="pressed" from="U" to="U/Anim2" method="play" binds= [ "Pulse" ]]
+[connection signal="pressed" from="D" to="." method="shift_row"]
+[connection signal="pressed" from="D" to="D/Anim2" method="stop"]
+[connection signal="pressed" from="D" to="D/Anim2" method="play" binds= [ "Pulse" ]]
+[connection signal="pressed" from="Ready" to="." method="toggle_ready"]

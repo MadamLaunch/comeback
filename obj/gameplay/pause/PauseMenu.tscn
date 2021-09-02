@@ -1,0 +1,146 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://obj/gameplay/pause/PauseMenu.gd" type="Script" id=1]
+[ext_resource path="res://obj/border/border_outter.svg" type="Texture" id=2]
+[ext_resource path="res://fonts/CooperHewitt-HeavyItalic.otf" type="DynamicFontData" id=4]
+[ext_resource path="res://obj/border/border_inner.svg" type="Texture" id=6]
+[ext_resource path="res://obj/gameplay/pause/PauseMenuItem.tscn" type="PackedScene" id=7]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Free"
+length = 0.5
+step = 0.05
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "hide"
+}, {
+"args": [  ],
+"method": "_free"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("..:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="DynamicFont" id=2]
+size = 64
+extra_spacing_top = 3
+font_data = ExtResource( 4 )
+
+[node name="PauseMenu" type="Node2D"]
+pause_mode = 2
+z_index = 50
+script = ExtResource( 1 )
+
+[node name="Anim" type="AnimationPlayer" parent="."]
+anims/Free = SubResource( 1 )
+
+[node name="Outline" type="NinePatchRect" parent="."]
+modulate = Color( 0.815686, 0.815686, 0.815686, 1 )
+margin_left = -300.0
+margin_top = -175.0
+margin_right = 300.0
+margin_bottom = 175.0
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 135, 135 )
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Background" type="ColorRect" parent="."]
+modulate = Color( 0.101961, 0.101961, 0.101961, 1 )
+margin_left = -275.0
+margin_top = -150.0
+margin_right = 275.0
+margin_bottom = 150.0
+color = Color( 0.101961, 0.101961, 0.101961, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Container" type="VBoxContainer" parent="."]
+margin_left = -300.0
+margin_top = -175.0
+margin_right = 300.0
+margin_bottom = 175.0
+custom_constants/separation = 5
+alignment = 1
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Header" type="Label" parent="Container"]
+margin_top = 63.0
+margin_right = 600.0
+margin_bottom = 130.0
+custom_fonts/font = SubResource( 2 )
+text = "p# paused"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="Continue" parent="Container" instance=ExtResource( 7 )]
+margin_top = 135.0
+margin_right = 600.0
+margin_bottom = 169.0
+text = "CONTINUE"
+
+[node name="Restart" parent="Container" instance=ExtResource( 7 )]
+margin_top = 174.0
+margin_right = 600.0
+margin_bottom = 208.0
+text = "RESTART"
+
+[node name="NewGame" parent="Container" instance=ExtResource( 7 )]
+margin_top = 213.0
+margin_right = 600.0
+margin_bottom = 247.0
+text = "NEW GAME"
+
+[node name="Quit" parent="Container" instance=ExtResource( 7 )]
+margin_top = 252.0
+margin_right = 600.0
+margin_bottom = 286.0
+text = "QUIT"
+
+[node name="Border" type="NinePatchRect" parent="."]
+margin_left = -300.0
+margin_top = -175.0
+margin_right = 300.0
+margin_bottom = 175.0
+texture = ExtResource( 6 )
+region_rect = Rect2( 0, 0, 135, 135 )
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+__meta__ = {
+"_edit_lock_": true
+}
+[connection signal="pressed" from="Container/Continue" to="." method="continue_game"]
+[connection signal="pressed" from="Container/Restart" to="." method="reset"]
+[connection signal="pressed" from="Container/NewGame" to="." method="reset" binds= [ true ]]
+[connection signal="pressed" from="Container/Quit" to="." method="quit"]
