@@ -1,5 +1,5 @@
 .import/
 .export/
 *.exe
-*.x11.64
+*_x11.64
 just double click godot bro itll run the game 
